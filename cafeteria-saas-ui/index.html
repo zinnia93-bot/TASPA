@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TASPA Cafeteria Dashboard</title>
+    <title>TASPA 식당관리자 대시보드</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -11,24 +11,18 @@
       <aside class="sidebar">
         <div class="brand">
           <div class="brand-row">
-            <strong>TASPA</strong>
-            <span class="leaf">⌁</span>
+            <img class="brand-logo" src="./image/taspa_logo_transparent.png" alt="TASPA" />
           </div>
-          <p>Smart Cafeteria 운영 플랫폼</p>
         </div>
 
         <div class="role-switcher" aria-label="역할 선택">
-          <button class="role-tab active" data-role="cafeteria" type="button">식당 관리자</button>
-          <button class="role-tab" data-role="workspace" type="button">회사 관리자</button>
-          <button class="role-tab" data-role="employee" type="button">사용자</button>
+          <button class="role-tab active" data-role="cafeteria" type="button"><i class="role-dot"></i>식당관리자</button>
+          <button class="role-tab" data-role="workspace" type="button"><i class="role-dot"></i>회사관리자</button>
+          <button class="role-tab" data-role="employee" type="button"><i class="role-dot"></i>사용자</button>
         </div>
 
-        <nav class="nav-list" id="role-nav" aria-label="메뉴">
-          <button class="nav-item active" type="button" data-page="dashboard-page"><span>▣</span>대시보드</button>
-          <button class="nav-item" type="button" data-page="prediction-page"><span>⌁</span>식수 예측</button>
-          <button class="nav-item" type="button" data-page="menu-page"><span>♨</span>메뉴 관리</button>
-          <button class="nav-item" type="button" data-page="report-page"><span>✎</span>리포트</button>
-          <button class="nav-item" type="button" data-page="settings-page"><span>⚙</span>설정</button>
+        <nav class="nav-list" id="role-nav" aria-label="식당관리자 메뉴">
+          <button class="nav-item active" type="button"><span>🏠</span>홈</button>
         </nav>
 
         <section class="zero-card">
@@ -47,19 +41,18 @@
 
       <main class="main">
         <header class="topbar">
-          <button class="menu-button" type="button" title="메뉴">☰</button>
           <div class="top-spacer"></div>
-          <button class="date-button" type="button">▣ <span id="today-date"></span> ⌄</button>
+          <button class="date-button" type="button">▣ <span>2026.07.10 (금)</span>⌄</button>
           <button class="bell-button" type="button" title="알림">♧<b>3</b></button>
           <button class="profile" type="button">
             <span id="profile-initial">김</span>
-            <strong><span id="profile-name">김지현</span><em id="profile-role">식당 관리자</em></strong>
+            <strong><span id="profile-name">김민지</span><em id="profile-role">식당 관리자</em></strong>
             <i>⌄</i>
           </button>
         </header>
 
         <section class="welcome">
-          <h1 id="welcome-title">안녕하세요, 김지현님! 오늘도 맛있는 하루 되세요! <span>⌁</span></h1>
+          <h1 id="welcome-title">안녕하세요, 김민지님!</h1>
           <p id="welcome-copy">오늘의 식당 운영 현황을 한눈에 확인하세요.</p>
         </section>
 
@@ -67,17 +60,17 @@
           <section class="kpi-grid">
             <article class="kpi-card">
               <div class="card-title">오늘 예상 식수 <span>ⓘ</span></div>
-              <strong class="green">742<small>명</small></strong>
-              <p>전일 대비 <b>▼ 32명 (4.1%)</b></p>
+              <strong class="green">628<small>명</small></strong>
+              <p>전일 대비 <b>▼ 91명 (12.7%)</b> · 금요일 재택 반영</p>
               <div class="sparkline jagged"></div>
             </article>
 
             <article class="kpi-card realtime">
               <div>
                 <div class="card-title">실시간 식사 인원 <span>ⓘ</span></div>
-                <strong>412<small>명</small></strong>
+                <strong>345<small>명</small></strong>
                 <p>예상 대비</p>
-                <b>55.5%</b>
+                <b>54.9%</b>
               </div>
               <div class="donut" style="--p:55"><span>55%</span></div>
             </article>
@@ -93,77 +86,1255 @@
               <div class="card-title">이번 달 절감 금액 (예상) <span>ⓘ</span></div>
               <strong class="green money">₩ 1,250,000</strong>
               <p>전년 동월 대비 <b>▲ 12%</b></p>
-              <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="mini-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
             </article>
 
             <article class="kpi-card progress-card">
               <div class="card-title">이번 달 결산 진행률 <span>ⓘ</span></div>
-              <strong>78<small>%</small></strong>
-              <div class="progress"><span style="width:78%"></span></div>
-              <p>정산 완료 회사 <b>5 / 7개</b></p>
+              <strong>80<small>%</small></strong>
+              <div class="progress"><span style="width:80%"></span></div>
+              <p>정산 완료 회사 <b>4 / 5개</b></p>
             </article>
           </section>
 
           <section class="content-grid">
-            <article class="panel absence-panel">
-              <div class="panel-head"><h2>오늘 부재 예정 인원</h2><button type="button">자세히 보기 ›</button></div>
-              <div class="absence-grid">
-                <div><span>휴가</span><b class="icon green-bg">▣</b><strong>28<small>명</small></strong></div>
-                <div><span>재택근무</span><b class="icon">⌂</b><strong>41<small>명</small></strong></div>
-                <div><span>외근</span><b class="icon">♟</b><strong>19<small>명</small></strong></div>
-                <div><span>출장</span><b class="icon muted">✈</b><strong>12<small>명</small></strong></div>
+          <article class="panel absence-panel">
+            <div class="panel-head">
+              <h2>오늘 부재 예정 인원</h2>
+              <button type="button">자세히 보기 ›</button>
+            </div>
+            <div class="absence-grid">
+              <div><span>휴가</span><b class="icon">🌴</b><strong>26<small>명</small></strong></div>
+              <div><span>재택근무</span><b class="icon">🏠</b><strong>68<small>명</small></strong></div>
+              <div><span>외근</span><b class="icon">🚶</b><strong>14<small>명</small></strong></div>
+              <div><span>출장</span><b class="icon">✈️</b><strong>10<small>명</small></strong></div>
+            </div>
+            <p class="notice">ⓘ 총 118명의 부재가 예정되어 있습니다. 금요일 재택이 많은 날이에요.</p>
+          </article>
+
+          <article class="panel company-panel">
+            <div class="panel-head">
+              <h2>회사별 오늘 예상 이용 인원</h2>
+              <button type="button">자세히 보기 ›</button>
+            </div>
+            <table>
+              <thead>
+                <tr><th>회사명</th><th></th><th>예상 인원</th><th>전일 대비</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A전자</td><td><span class="row-bar"><i style="width:100%"></i></span></td><td>201명</td><td class="up">▼ 21명 (9.5%)</td></tr>
+                <tr><td>B솔루션</td><td><span class="row-bar"><i style="width:75%"></i></span></td><td>151명</td><td class="up">▼ 14명 (8.5%)</td></tr>
+                <tr><td>C엔지니어링</td><td><span class="row-bar"><i style="width:56%"></i></span></td><td>113명</td><td class="up">▼ 9명 (7.4%)</td></tr>
+                <tr><td>D테크</td><td><span class="row-bar"><i style="width:47%"></i></span></td><td>94명</td><td class="up">▼ 8명 (7.8%)</td></tr>
+                <tr><td>E소프트</td><td><span class="row-bar"><i style="width:34%"></i></span></td><td>69명</td><td class="up">▼ 7명 (9.2%)</td></tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="panel menu-panel">
+            <div class="panel-head">
+              <h2>오늘 메뉴 & 선호도</h2>
+              <strong>투표 참여 312명</strong>
+            </div>
+            <div class="menu-cards">
+              <section class="menu-card">
+                <div>
+                  <h3>메뉴 A <span>추천 메뉴</span></h3>
+                  <p>돈까스 & 수제소스</p>
+                  <strong>55<small>%</small></strong>
+                  <em>172명</em>
+                </div>
+                <div class="food-art cutlet" aria-label="돈까스 메뉴 이미지"></div>
+                <div class="progress"><span style="width:55%"></span></div>
+              </section>
+              <section class="menu-card">
+                <div>
+                  <h3>메뉴 B</h3>
+                  <p>불고기 덮밥</p>
+                  <strong>45<small>%</small></strong>
+                  <em>140명</em>
+                </div>
+                <div class="food-art rice" aria-label="불고기 덮밥 메뉴 이미지"></div>
+                <div class="progress"><span style="width:45%"></span></div>
+              </section>
+            </div>
+          </article>
+
+          <article class="panel live-panel">
+            <div class="panel-head">
+              <h2>실시간 식사 현황</h2>
+              <button type="button">자세히 보기 ›</button>
+            </div>
+            <div class="line-chart">
+              <div class="legend"><span></span>예상 인원 <b></b>실제 식사 인원</div>
+              <svg viewBox="0 0 720 260" role="img" aria-label="시간대별 식사 현황">
+                <defs>
+                  <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#47a537" stop-opacity=".22" />
+                    <stop offset="100%" stop-color="#47a537" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <g class="grid-lines">
+                  <line x1="40" x2="650" y1="42" y2="42" />
+                  <line x1="40" x2="650" y1="90" y2="90" />
+                  <line x1="40" x2="650" y1="138" y2="138" />
+                  <line x1="40" x2="650" y1="186" y2="186" />
+                  <line x1="40" x2="650" y1="234" y2="234" />
+                </g>
+                <path class="expected" d="M40 234 C90 228 124 210 165 178 C206 146 242 112 286 96 C330 80 362 28 410 54 C456 79 482 140 532 154 C582 168 604 212 650 224" />
+                <path class="actual-fill" d="M40 234 C96 232 142 220 188 188 C232 154 264 146 316 136 C366 126 392 98 438 118 C486 139 510 166 558 176 C604 188 624 218 650 228 L650 234 L40 234 Z" />
+                <path class="actual" d="M40 234 C96 232 142 220 188 188 C232 154 264 146 316 136 C366 126 392 98 438 118 C486 139 510 166 558 176 C604 188 624 218 650 228" />
+                <circle cx="438" cy="118" r="5" />
+                <g class="labels">
+                  <text x="74" y="254">10시</text>
+                  <text x="236" y="254">11시</text>
+                  <text x="394" y="254">12시</text>
+                  <text x="552" y="254">13시</text>
+                </g>
+              </svg>
+              <div class="tooltip-card">12:10<br /><b>실제 345명</b><br />예상 628명</div>
+              <div class="current-rate">
+                <span>현재 이용률</span>
+                <div class="donut" style="--p:55"><span>55%<small>(345 / 628)</small></span></div>
               </div>
-              <p class="notice">ⓘ 총 100명의 부재가 예정되어 있습니다.</p>
+            </div>
+          </article>
+
+          <article class="panel notice-panel">
+            <div class="panel-head"><h2>최근 공지사항</h2><button type="button">더보기 ›</button></div>
+            <p><span>NEW</span> 7월 13일 (월) 메뉴 안내 <time>2026.07.09</time></p>
+          </article>
+
+          <article class="panel voc-panel">
+            <div class="panel-head"><h2>최근 VOC</h2><button type="button">더보기 ›</button></div>
+            <p><b>🙂</b> 오늘 불고기 덮밥 정말 맛있었어요! <time>2026.07.10</time></p>
+            <small>B솔루션 / 홍길동 대리</small>
+          </article>
+
+          <article class="panel settlement-panel">
+            <div class="panel-head"><h2>정산 현황 요약</h2><button type="button">자세히 보기 ›</button></div>
+            <div>
+              <p>총 5개사 중 <b>4개사 완료</b></p>
+              <span>미정산 금액</span>
+              <strong>₩ 19,040,000</strong>
+            </div>
+            <div class="donut small" style="--p:80"></div>
+            <ul>
+              <li><span></span>정산 완료 4 (80%)</li>
+              <li><span></span>정산 대기 1 (20%)</li>
+            </ul>
+          </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="dashboard2-page">
+          <section class="kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">다음 영업일 예상 식수 <span>ⓘ</span></div>
+              <strong class="green">736<small>명</small></strong>
+              <p>예측 신뢰도 <b>88%</b></p>
+              <div class="sparkline soft"></div>
             </article>
 
-            <article class="panel company-panel">
-              <div class="panel-head"><h2>회사별 오늘 예상 이용 인원</h2><button type="button">자세히 보기 ›</button></div>
+            <article class="kpi-card realtime">
+              <div>
+                <div class="card-title">오늘 예측 정확도 <span>ⓘ</span></div>
+                <strong class="green">88.2<small>%</small></strong>
+                <p>예측 702 · 실제 628</p>
+                <b>오차 +74명</b>
+              </div>
+              <div class="donut" style="--p:88"><span>88%</span></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">최근 30일 평균 정확도</div>
+              <strong>87.4<small>%</small></strong>
+              <p>전월 대비 <b>▲ 2.1%p</b></p>
+              <div class="sparkline"></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">평균 예측 오차</div>
+              <strong>±79<small>명</small></strong>
+              <p>총 식수 대비 <b>11.8%</b></p>
+              <div class="mini-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">예측 기반 예상 잔반</div>
+              <strong class="green">32<small>kg</small></strong>
+              <p>잔반율 <b>4.1%</b> · 개선 목표 2%</p>
+              <div class="sparkline jagged"></div>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2 chart-hero">
+              <div class="panel-head">
+                <div>
+                  <h2>예측 vs 실제 식수 추이</h2>
+                  <p>오늘 기준 전후 1주 · 점심 · 전체 직원 1,000명 (5개사 합산). 오늘 이후는 예측만 표시됩니다.</p>
+                </div>
+                <div class="legend-chips">
+                  <span class="chip expected-chip"><i></i>예측 식수</span>
+                  <span class="chip actual-chip"><i></i>실제 식수</span>
+                  <span class="chip range-chip">07.03 - 07.17</span>
+                </div>
+              </div>
+              <div class="line-chart status-chart daily-chart">
+                <svg viewBox="0 0 1200 320" role="img" aria-label="일별 예측 대비 실제 식수 추이 (전체 직원 1,000명 기준)">
+                  <defs>
+                    <linearGradient id="dailyFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#47a537" stop-opacity=".3" />
+                      <stop offset="70%" stop-color="#47a537" stop-opacity=".06" />
+                      <stop offset="100%" stop-color="#47a537" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0%" stop-color="#5ec24d" />
+                      <stop offset="100%" stop-color="#188f2b" />
+                    </linearGradient>
+                  </defs>
+                  <rect class="future-zone" x="620" y="20" width="550" height="250" />
+                  <rect class="band" x="34" y="20" width="72" height="250" rx="10" />
+                  <rect class="band" x="584" y="20" width="72" height="250" rx="10" />
+                  <rect class="band" x="1134" y="20" width="46" height="250" rx="10" />
+                  <g class="grid-lines">
+                    <line x1="70" x2="1170" y1="20" y2="20" />
+                    <line x1="70" x2="1170" y1="70" y2="70" />
+                    <line x1="70" x2="1170" y1="120" y2="120" />
+                    <line x1="70" x2="1170" y1="170" y2="170" />
+                    <line x1="70" x2="1170" y1="220" y2="220" />
+                    <line x1="70" x2="1170" y1="270" y2="270" />
+                  </g>
+                  <line class="today-line" x1="620" y1="20" x2="620" y2="276" />
+                  <g class="y-labels">
+                    <text x="58" y="24">1,000명</text>
+                    <text x="58" y="74">900</text>
+                    <text x="58" y="124">800</text>
+                    <text x="58" y="174">700</text>
+                    <text x="58" y="224">600</text>
+                    <text x="58" y="274">500</text>
+                  </g>
+                  <path class="expected" d="M70 171 L180 119 L290 188 L400 117 L510 120 L620 169 L730 152 L840 146 L950 150 L1060 144 L1170 198" />
+                  <path class="actual-fill" fill="url(#dailyFill)" d="M70 213 L180 156 L290 150 L400 159 L510 161 L620 206 L620 270 L70 270 Z" />
+                  <path class="actual" stroke="url(#lineGrad)" d="M70 213 L180 156 L290 150 L400 159 L510 161 L620 206" />
+                  <circle cx="70" cy="213" r="4.5" />
+                  <circle cx="180" cy="156" r="4.5" />
+                  <circle cx="290" cy="150" r="4.5" />
+                  <circle cx="400" cy="159" r="4.5" />
+                  <circle cx="510" cy="161" r="4.5" />
+                  <circle class="last-halo" cx="620" cy="206" r="13" />
+                  <circle cx="620" cy="206" r="6.5" />
+                  <g class="future-dots">
+                    <circle cx="730" cy="152" r="4" />
+                    <circle cx="840" cy="146" r="4" />
+                    <circle cx="950" cy="150" r="4" />
+                    <circle cx="1060" cy="144" r="4" />
+                    <circle cx="1170" cy="198" r="4" />
+                  </g>
+                  <g class="today-badge">
+                    <rect x="579" y="224" width="82" height="32" rx="16" />
+                    <text x="620" y="245">오늘 628</text>
+                  </g>
+                  <g class="point-values">
+                    <text x="70" y="195">615</text>
+                    <text x="180" y="138">728</text>
+                    <text x="290" y="132">741</text>
+                    <text x="400" y="141">722</text>
+                    <text x="510" y="143">719</text>
+                  </g>
+                  <g class="future-values">
+                    <text x="730" y="134">736</text>
+                    <text x="840" y="128">748</text>
+                    <text x="950" y="132">741</text>
+                    <text x="1060" y="126">752</text>
+                    <text x="1164" y="180">645</text>
+                  </g>
+                  <g class="labels">
+                    <text x="70" y="302">07.03 금</text>
+                    <text x="180" y="302">07.06 월</text>
+                    <text x="290" y="302">07.07 화</text>
+                    <text x="400" y="302">07.08 수</text>
+                    <text x="510" y="302">07.09 목</text>
+                    <text class="today-label" x="620" y="302">07.10 오늘</text>
+                    <text x="730" y="302">07.13 월</text>
+                    <text x="840" y="302">07.14 화</text>
+                    <text x="950" y="302">07.15 수</text>
+                    <text x="1060" y="302">07.16 목</text>
+                    <text x="1164" y="302">07.17 금</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="chart-stats">
+                <div><span>최근 2주 평균 정확도</span><b>88.2%</b></div>
+                <div><span>일 평균 오차</span><b>±79명</b></div>
+                <div><span>금요일 평균 (재택 영향)</span><b>-106명</b></div>
+                <div><span>다음 주 예상 피크 (07.16 목)</span><b>752명</b></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2>활성화된 예측 지표</h2>
+                  <p>현재 예측 모델에 반영 중인 입력 지표와 기여도입니다.</p>
+                </div>
+                <button type="button">지표 설정 ›</button>
+              </div>
+              <div class="indicator-list">
+                <div><span>과거 식수 패턴</span><i style="width:100%"></i><b>32%</b><em class="mini-pill good">활성</em></div>
+                <div><span>부재 데이터 (그룹웨어)</span><i style="width:75%"></i><b>24%</b><em class="mini-pill good">활성</em></div>
+                <div><span>메뉴 선호도 (투표+태깅)</span><i style="width:56%"></i><b>18%</b><em class="mini-pill good">활성</em></div>
+                <div><span>요일 효과</span><i style="width:38%"></i><b>12%</b><em class="mini-pill good">활성</em></div>
+                <div><span>날씨 (기상청 API)</span><i style="width:28%"></i><b>9%</b><em class="mini-pill good">활성</em></div>
+                <div><span>사내 행사 일정</span><i style="width:16%"></i><b>5%</b><em class="mini-pill good">활성</em></div>
+                <div><span>공휴일 전후 효과</span><i style="width:0%"></i><b>-</b><em class="mini-pill warn">대기</em></div>
+              </div>
+              <p class="notice">ⓘ 그룹웨어 결재 연동 정상 — 5개사 전체에서 부재 데이터가 자동 수집되고 있습니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>오늘 예측 보정 내역</h2>
+                <button type="button">보정 로그 ›</button>
+              </div>
+              <div class="prep-list">
+                <div><span>18:00 기본 예측</span><b>718명</b><em>전일 자동 생성</em></div>
+                <div><span>결재 취소 반영</span><b>+3명</b><em>휴가 취소 3건</em></div>
+                <div><span>투표 마감 반영</span><b>-19명</b><em>참여 312명</em></div>
+                <div><span>10:30 최종 예측</span><b>702명</b><em class="bad-text">확정</em></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <h2>회사별 예측 정확도</h2>
+                <button type="button">상세 보기 ›</button>
+              </div>
               <table>
                 <thead>
-                  <tr><th>회사명</th><th></th><th>예상 인원</th><th>전일 대비</th></tr>
+                  <tr><th>회사</th><th>어제 예측</th><th>실제</th><th>오차</th><th>최근 30일 정확도</th><th>주요 변수</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>A전자</td><td><span class="row-bar"><i style="width:100%"></i></span></td><td>320명</td><td class="down">▼ 18명 (5.3%)</td></tr>
-                  <tr><td>B솔루션</td><td><span class="row-bar"><i style="width:58%"></i></span></td><td>198명</td><td class="down">▼ 7명 (3.4%)</td></tr>
-                  <tr><td>C엔지니어링</td><td><span class="row-bar"><i style="width:40%"></i></span></td><td>142명</td><td class="down">▼ 4명 (2.7%)</td></tr>
-                  <tr><td>D테크</td><td><span class="row-bar"><i style="width:21%"></i></span></td><td>82명</td><td class="up">▲ 3명 (3.8%)</td></tr>
+                  <tr><td>A전자</td><td>268명</td><td>222명</td><td>+46명</td><td class="up">87.9%</td><td>재택 비중 높음</td></tr>
+                  <tr><td>B솔루션</td><td>186명</td><td>178명</td><td>+8명</td><td class="up">89.4%</td><td>이용 패턴 안정</td></tr>
+                  <tr><td>C엔지니어링</td><td>158명</td><td>131명</td><td>+27명</td><td class="up">85.1%</td><td>외근 변동 큼</td></tr>
+                  <tr><td>D테크</td><td>104명</td><td>112명</td><td>-8명</td><td class="up">88.7%</td><td>신규 입사 반영</td></tr>
+                  <tr><td>E소프트</td><td>85명</td><td>76명</td><td>+9명</td><td class="up">84.9%</td><td>표본 작음</td></tr>
                 </tbody>
               </table>
             </article>
 
-            <article class="panel menu-panel">
-              <div class="panel-head"><h2>오늘 메뉴 & 선호도</h2><strong>투표 참여 312명</strong></div>
-              <div class="menu-cards">
-                <section class="menu-card">
-                  <div>
-                    <h3>메뉴 A <span>추천 메뉴</span></h3>
-                    <p>돈까스 & 수제소스</p>
-                    <strong>62<small>%</small></strong>
-                    <em>194명</em>
-                  </div>
+            <article class="panel">
+              <div class="panel-head">
+                <h2>주간 예측 정확도</h2>
+                <button type="button">월간 보기 ›</button>
+              </div>
+              <div class="week-bars">
+                <div style="--h:131"><b>87.4%</b><span>월</span></div>
+                <div style="--h:134"><b>89.1%</b><span>화</span></div>
+                <div style="--h:128"><b>85.2%</b><span>수</span></div>
+                <div style="--h:136"><b>90.3%</b><span>목</span></div>
+                <div style="--h:127"><b>84.6%</b><span>금</span></div>
+              </div>
+              <p class="notice">ⓘ 금요일은 재택 변동이 커서 오차가 가장 큽니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>예측 파이프라인 상태</h2>
+                <button type="button">모델 로그 ›</button>
+              </div>
+              <div class="quality-list">
+                <div><b>모델 버전 v2.3</b><span>학습 데이터: 최근 3개월 Meal Log 44,580건 + 부재 6,320건</span></div>
+                <div><b>어제 18:00 예측 실행 성공</b><span>소요 42초 · 다음 보정은 오늘 10:30에 자동 실행됩니다.</span></div>
+                <div><b>데이터 수집 정상</b><span>그룹웨어 5/5개사 · 날씨 API · 투표 데이터 모두 정상 수신 중입니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="dashboard3-page">
+          <section class="kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">다음 영업일 메뉴 A 예상 선택률 <span>ⓘ</span></div>
+              <strong class="green">58<small>%</small></strong>
+              <p>돈까스 & 수제소스</p>
+              <div class="sparkline soft"></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">다음 영업일 메뉴 B 예상 선택률 <span>ⓘ</span></div>
+              <strong class="amber-text">42<small>%</small></strong>
+              <p>순두부찌개</p>
+              <div class="sparkline soft amber"></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">오늘 투표 참여</div>
+              <strong>312<small>명</small></strong>
+              <p>예상 식수 대비 <b>49.7%</b></p>
+              <div class="mini-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">투표-태깅 평균 격차</div>
+              <strong>3.7<small>%p</small></strong>
+              <p>최근 30일 · 의향 대비 실제</p>
+              <div class="sparkline"></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">선호 반영 잔반 감소</div>
+              <strong class="green">-23<small>%</small></strong>
+              <p>전월 대비 · 메뉴 비율 최적화</p>
+              <div class="sparkline jagged"></div>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2 chart-hero">
+              <div class="panel-head">
+                <div>
+                  <h2>다음 영업일 메뉴 선호도 예측</h2>
+                  <p>2026.07.13 (월) 점심 · 과거 선호도, 날씨, 요일, 메뉴 조합을 반영한 A/B 비율입니다.</p>
+                </div>
+                <div class="legend-chips">
+                  <span class="chip range-chip">예상 식수 736명</span>
+                  <span class="chip range-chip">권장 조리 760인분</span>
+                </div>
+              </div>
+              <div class="versus-grid">
+                <div class="versus-card menu-a">
                   <div class="food-art cutlet" aria-label="돈까스 메뉴 이미지"></div>
-                  <div class="progress"><span style="width:62%"></span></div>
-                </section>
-                <section class="menu-card">
                   <div>
-                    <h3>메뉴 B</h3>
-                    <p>불고기 덮밥</p>
-                    <strong>38<small>%</small></strong>
-                    <em>118명</em>
+                    <span>메뉴 A</span>
+                    <h3>돈까스 & 수제소스</h3>
+                    <strong>58<small>%</small></strong>
+                    <p>권장 준비량 <b>441인분</b></p>
+                    <div class="progress"><span style="width:58%"></span></div>
                   </div>
+                </div>
+                <div class="ab-donut" style="--a:58">
+                  <span>58 : 42<small><i class="a"></i>메뉴 A · <i class="b"></i>메뉴 B</small></span>
+                </div>
+                <div class="versus-card menu-b">
+                  <div class="food-art soup" aria-label="순두부찌개 메뉴 이미지"></div>
+                  <div>
+                    <span>메뉴 B</span>
+                    <h3>순두부찌개</h3>
+                    <strong>42<small>%</small></strong>
+                    <p>권장 준비량 <b>319인분</b></p>
+                    <div class="progress"><span style="width:42%"></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="evidence-head">예측 근거</div>
+              <div class="evidence-grid">
+                <div class="evidence">
+                  <span class="src">태깅 실측</span>
+                  <p>최근 12주 Meal Log <b>44,580건</b> · 튀김+국물 조합 월요일 표본에서 A 평균 <b>60.8%</b></p>
+                </div>
+                <div class="evidence">
+                  <span class="src">사전 투표</span>
+                  <p>월요일 오전 <b>10:30</b> 투표 마감 · 마감 즉시 자동 보정 (최근 30일 평균 격차 <b>3.7%p</b>)</p>
+                </div>
+                <div class="evidence">
+                  <span class="src">날씨 보정</span>
+                  <p>월요일 강수확률 <b>80%</b> · 최근 강우일 8회 표본에서 국물 메뉴 <b>+3.1%p</b></p>
+                </div>
+                <div class="evidence">
+                  <span class="src">신뢰 구간</span>
+                  <p>A 비율 <b>58% ± 2.4%p</b> (95% 신뢰수준) · 최근 30일 선호도 예측 정확도 <b>91.3%</b></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>사전 투표 vs 실제 태깅</h2>
+                  <p>최근 5일 · 하루당 투표(의향)와 태깅(실제) 막대의 A/B 구성을 비교해 예측을 보정합니다.</p>
+                </div>
+                <div class="legend-chips">
+                  <span class="chip a-chip"><i></i>메뉴 A</span>
+                  <span class="chip b-chip"><i></i>메뉴 B</span>
+                </div>
+              </div>
+              <div class="stack-bars">
+                <div class="stack-day">
+                  <div class="stack-bar vote">
+                    <i class="seg b" style="height:40%"><b>40%</b></i>
+                    <i class="seg a" style="height:60%"><b>60%</b></i>
+                  </div>
+                  <div class="stack-bar tag">
+                    <i class="seg b" style="height:37%"><b>37%</b></i>
+                    <i class="seg a" style="height:63%"><b>63%</b></i>
+                  </div>
+                  <div class="caps"><span>투표</span><span>태깅</span></div>
+                  <strong>07.06 월</strong>
+                </div>
+                <div class="stack-day">
+                  <div class="stack-bar vote">
+                    <i class="seg b" style="height:43%"><b>43%</b></i>
+                    <i class="seg a" style="height:57%"><b>57%</b></i>
+                  </div>
+                  <div class="stack-bar tag">
+                    <i class="seg b" style="height:46%"><b>46%</b></i>
+                    <i class="seg a" style="height:54%"><b>54%</b></i>
+                  </div>
+                  <div class="caps"><span>투표</span><span>태깅</span></div>
+                  <strong>07.07 화</strong>
+                </div>
+                <div class="stack-day">
+                  <div class="stack-bar vote">
+                    <i class="seg b" style="height:37%"><b>37%</b></i>
+                    <i class="seg a" style="height:63%"><b>63%</b></i>
+                  </div>
+                  <div class="stack-bar tag">
+                    <i class="seg b" style="height:34%"><b>34%</b></i>
+                    <i class="seg a" style="height:66%"><b>66%</b></i>
+                  </div>
+                  <div class="caps"><span>투표</span><span>태깅</span></div>
+                  <strong>07.08 수</strong>
+                </div>
+                <div class="stack-day">
+                  <div class="stack-bar vote">
+                    <i class="seg b" style="height:38%"><b>38%</b></i>
+                    <i class="seg a" style="height:62%"><b>62%</b></i>
+                  </div>
+                  <div class="stack-bar tag">
+                    <i class="seg b" style="height:42%"><b>42%</b></i>
+                    <i class="seg a" style="height:58%"><b>58%</b></i>
+                  </div>
+                  <div class="caps"><span>투표</span><span>태깅</span></div>
+                  <strong>07.09 목</strong>
+                </div>
+                <div class="stack-day today">
+                  <div class="stack-bar vote">
+                    <i class="seg b" style="height:45%"><b>45%</b></i>
+                    <i class="seg a" style="height:55%"><b>55%</b></i>
+                  </div>
+                  <div class="stack-bar tag">
+                    <i class="seg b" style="height:51%"><b>51%</b></i>
+                    <i class="seg a" style="height:49%"><b>49%</b></i>
+                  </div>
+                  <div class="caps"><span>투표</span><span>태깅</span></div>
+                  <strong>07.10 오늘</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>회사별 선호 분포</h2>
+                <button type="button">직군별 보기 ›</button>
+              </div>
+              <div class="preference-bars">
+                <div><span>A전자</span><b>A 68%</b><i><em style="width:68%"></em></i><strong>B 32%</strong></div>
+                <div><span>B솔루션</span><b>A 55%</b><i><em style="width:55%"></em></i><strong>B 45%</strong></div>
+                <div><span>C엔지니어링</span><b>A 49%</b><i><em style="width:49%"></em></i><strong>B 51%</strong></div>
+                <div><span>D테크</span><b>A 61%</b><i><em style="width:61%"></em></i><strong>B 39%</strong></div>\n                <div><span>E소프트</span><b>A 52%</b><i><em style="width:52%"></em></i><strong>B 48%</strong></div>
+              </div>
+              <p class="notice">ⓘ A전자는 튀김류 선호가 높아 A메뉴 비율 상향에 반영됩니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>카테고리별 선호도</h2>
+                <button type="button">상세 분석 ›</button>
+              </div>
+              <div class="impact-list">
+                <div><span>튀김·돈까스</span><b>64%</b><em>화요일 +5%p</em><i style="width:64%"></i></div>
+                <div><span>볶음·구이</span><b>61%</b><em>안정적</em><i style="width:61%"></i></div>
+                <div><span>국물·찌개</span><b>58%</b><em>비 오는 날 +3%p</em><i style="width:58%"></i></div>
+                <div><span>면·분식</span><b>52%</b><em>더운 날 +4%p</em><i style="width:52%"></i></div>
+                <div><span>샐러드·경식</span><b>38%</b><em>월요일 +3%p</em><i style="width:38%"></i></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>다음 주 메뉴 선호도 예측</h2>
+                  <p>등록된 메뉴 조합 기준 예상 A/B 비율과 권장 준비량입니다.</p>
+                </div>
+                <button type="button">메뉴 편집 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>날짜</th><th>메뉴 A</th><th>메뉴 B</th><th>예상 비율 (A:B)</th><th>권장 준비량</th><th>잔반 위험</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>07.13 월</td><td>돈까스 & 수제소스</td><td>순두부찌개</td><td>58 : 42</td><td>441 / 319인분</td><td><span class="mini-pill">낮음</span></td></tr>
+                  <tr><td>07.14 화</td><td>제육볶음</td><td>냉모밀</td><td>61 : 39</td><td>473 / 302인분</td><td><span class="mini-pill warn">보통</span></td></tr>
+                  <tr><td>07.15 수</td><td>생선까스</td><td>우동</td><td>46 : 54</td><td>352 / 413인분</td><td><span class="mini-pill">낮음</span></td></tr>
+                  <tr><td>07.16 목</td><td>카레라이스</td><td>샐러드볼</td><td>64 : 36</td><td>496 / 279인분</td><td><span class="mini-pill warn">주의</span></td></tr>
+                  <tr><td>07.17 금</td><td>치킨 카라아게</td><td>김치찌개</td><td>57 : 43</td><td>382 / 288인분</td><td><span class="mini-pill">낮음</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="dashboard4-page">
+          <section class="kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">이번 달 청구 예정 <span>ⓘ</span></div>
+              <strong class="green money">₩ 104,020,000</strong>
+              <p>총 식수 <b>14,860식</b> · 5개사</p>
+              <div class="mini-bars">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+
+            <article class="kpi-card realtime">
+              <div>
+                <div class="card-title">정산 진행률 <span>ⓘ</span></div>
+                <strong class="green">80<small>%</small></strong>
+                <p>확정 완료</p>
+                <b>4 / 5개사</b>
+              </div>
+              <div class="donut" style="--p:80"><span>80%</span></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">자동 집계율</div>
+              <strong class="green">99.2<small>%</small></strong>
+              <p>수기 확인 필요 <b>7건</b>뿐</p>
+              <div class="sparkline soft"></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">조직 변경 자동 반영</div>
+              <strong>23<small>건</small></strong>
+              <p>퇴사 6 · 이동 3 · 입사 14</p>
+              <div class="sparkline"></div>
+            </article>
+
+            <article class="kpi-card">
+              <div class="card-title">정산 업무 시간 절감</div>
+              <strong class="green">32<small>시간/월</small></strong>
+              <p>수작업 집계 대비 <b>-94%</b></p>
+              <div class="sparkline jagged"></div>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2 chart-hero">
+              <div class="panel-head">
+                <div>
+                  <h2>회사별 정산 현황</h2>
+                  <p>2026년 6월 · Meal Log 14,860건이 계약 단가와 정산 방식에 따라 자동 집계되었습니다.</p>
+                </div>
+                <div class="legend-chips">
+                  <span class="chip range-chip">2026년 6월</span>
+                  <span class="chip range-chip">총 ₩ 104,020,000</span>
+                </div>
+              </div>
+              <div class="settle-bars">
+                <div class="row">
+                  <span>A전자</span>
+                  <i><em style="width:100%"></em></i>
+                  <b>₩ 37,240,000</b>
+                  <u>5,320식</u>
+                  <span class="mini-pill good">완료</span>
+                </div>
+                <div class="row">
+                  <span>B솔루션</span>
+                  <i><em style="width:73%"></em></i>
+                  <b>₩ 27,020,000</b>
+                  <u>3,860식</u>
+                  <span class="mini-pill good">완료</span>
+                </div>
+                <div class="row wait">
+                  <span>C엔지니어링</span>
+                  <i><em style="width:51%"></em></i>
+                  <b>₩ 19,040,000</b>
+                  <u>2,720식</u>
+                  <span class="mini-pill warn">승인 대기</span>
+                </div>
+                <div class="row">
+                  <span>D테크</span>
+                  <i><em style="width:36%"></em></i>
+                  <b>₩ 13,580,000</b>
+                  <u>1,940식</u>
+                  <span class="mini-pill good">완료</span>
+                </div>
+                <div class="row">
+                  <span>E소프트</span>
+                  <i><em style="width:19%"></em></i>
+                  <b>₩ 7,140,000</b>
+                  <u>1,020식</u>
+                  <span class="mini-pill good">완료</span>
+                </div>
+              </div>
+              <div class="chart-stats">
+                <div><span>자동 집계된 식수</span><b>14,853 / 14,860식</b></div>
+                <div><span>확인 필요</span><b>7건 (방문자 매핑)</b></div>
+                <div><span>미확정 금액</span><b>₩ 19,040,000</b></div>
+                <div><span>정산 마감 예정</span><b>07.15 (수)</b></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>자동 정산 파이프라인</h2>
+                  <p>수집부터 정산서 생성까지 자동으로 처리되고, 사람은 마지막 확정 승인만 합니다.</p>
+                </div>
+              </div>
+              <div class="pipeline">
+                <div class="pipe-step">
+                  <i>▦</i>
+                  <b>Meal Log 수집</b>
+                  <span>14,860건 · QR/사원증/수기</span>
+                  <em class="mini-pill good">자동</em>
+                </div>
+                <div class="pipe-step">
+                  <i>◎</i>
+                  <b>계약 단가 적용</b>
+                  <span>5개 계약 · 단가 7,000원</span>
+                  <em class="mini-pill good">자동</em>
+                </div>
+                <div class="pipe-step">
+                  <i>♙</i>
+                  <b>조직 변경 반영</b>
+                  <span>퇴사·이동·입사 23건</span>
+                  <em class="mini-pill good">자동</em>
+                </div>
+                <div class="pipe-step">
+                  <i>▥</i>
+                  <b>정산서 생성</b>
+                  <span>5개사 · 청구서 자동 생성</span>
+                  <em class="mini-pill good">자동</em>
+                </div>
+                <div class="pipe-step human">
+                  <i>✓</i>
+                  <b>확정 & 발송</b>
+                  <span>4 / 5개사 완료</span>
+                  <em class="mini-pill warn">관리자 승인</em>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>조직도 변경 자동 반영</h2>
+                <button type="button">변경 로그 ›</button>
+              </div>
+              <div class="contract-list">
+                <div><b>퇴사 6건</b><span>퇴사일까지의 식수만 해당 월 정산에 포함</span><em>권한 자동 회수</em></div>
+                <div><b>계열사 이동 3건</b><span>이동일 기준으로 청구 회사 자동 분리</span><em>예: 박도윤 06.12 B→C</em></div>
+                <div><b>신규 입사 14건</b><span>입사일부터 자동 집계 · 계정 초대 발송됨</span><em>HR 동기화 06:00</em></div>
+              </div>
+              <p class="notice">ⓘ 조직도 연동으로 이번 달 소속 확인 작업 0건 — 수작업이 필요 없었습니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>정산 처리 이력</h2>
+                <button type="button">전체 로그 ›</button>
+              </div>
+              <div class="meal-log-list">
+                <div><b>07.09</b><span>C엔지니어링 정산서 승인 요청 재발송</span><em>자동</em></div>
+                <div><b>07.04</b><span>4개사 정산 확정 · 정산서 발송 완료</span><em>김민지</em></div>
+                <div><b>07.01</b><span>조직 변경 3건 반영 · 청구액 재계산</span><em>자동</em></div>
+                <div><b>06.30</b><span>방문자 식수 7건 확인 요청 알림 발송</span><em>자동</em></div>
+              </div>
+              <p class="notice">ⓘ 이번 달 사람이 직접 처리한 작업은 확정 승인 1건입니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>월별 청구액 추이</h2>
+                <button type="button">연간 보기 ›</button>
+              </div>
+              <div class="week-bars">
+                <div style="--h:113"><b>88.2M</b><span>2월</span></div>
+                <div style="--h:124"><b>96.5M</b><span>3월</span></div>
+                <div style="--h:121"><b>94.1M</b><span>4월</span></div>
+                <div style="--h:127"><b>98.7M</b><span>5월</span></div>
+                <div style="--h:134"><b>104.0M</b><span>6월</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>확인 필요 항목</h2>
+                <button type="button">전체 처리 ›</button>
+              </div>
+              <div class="quality-list">
+                <div><b>방문자 식수 7건</b><span>부담 주체 미지정 — 매핑하면 청구액이 자동 재계산됩니다.</span></div>
+                <div><b>C엔지니어링 승인 대기</b><span>정산서 발송 완료 · 회사관리자 승인을 기다리는 중입니다.</span></div>
+                <div><b>B솔루션 단가 변경 예정</b><span>08.01부터 7,200원 적용 — 8월 정산에 자동 반영됩니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="prediction-page">
+          <section class="prediction-hero">
+            <article class="prediction-summary">
+              <div class="panel-head plain">
+                <div>
+                  <h2>다음 영업일 점심 식수 예측</h2>
+                  <p>2026.07.13 (월) · 판교 본사 구내식당</p>
+                </div>
+                <button class="green-button" type="button">예측 재계산</button>
+              </div>
+              <div class="prediction-number">
+                <span>총 예상 식수</span>
+                <strong>736<small>명</small></strong>
+                <p>추천 조리량 <b>760인분</b> · 여유 24인분 (3.3%)</p>
+              </div>
+              <div class="confidence-row">
+                <div><span>예측 신뢰도</span><b>88%</b></div>
+                <div><span>피크 시간</span><b>12:05-12:25</b></div>
+                <div><span>예상 잔반</span><b class="green">31kg</b></div>
+              </div>
+            </article>
+
+            <article class="panel factor-panel">
+              <div class="panel-head">
+                <h2>예측 영향 요인</h2>
+                <button type="button">데이터 보기 ›</button>
+              </div>
+              <div class="factor-list">
+                <div><span>메뉴 선호도</span><strong>돈까스 선호 상승</strong><em>+8%</em></div>
+                <div><span>휴가 예정</span><strong>전사 26명</strong><em>-5%</em></div>
+                <div><span>재택 근무</span><strong>68명 예정</strong><em>-7%</em></div>
+                <div><span>날씨</span><strong>비 예보 · 26℃</strong><em>+3%</em></div>
+                <div><span>요일 효과</span><strong>월요일 평균</strong><em>+1%</em></div>
+              </div>
+            </article>
+          </section>
+
+          <section class="menu-ratio-section">
+            <article class="panel menu-ratio-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>메뉴 A/B 준비 비율 예측</h2>
+                  <p>과거 선호도, 날씨, 요일, 메뉴 조합을 반영한 권장 준비량입니다.</p>
+                </div>
+                <button type="button">근거 보기 ›</button>
+              </div>
+              <div class="ratio-layout">
+                <div class="ratio-card recommended">
+                  <span>메뉴 A · 돈까스</span>
+                  <strong>58<small>%</small></strong>
+                  <p>441인분 준비 권장</p>
+                  <div class="progress"><span style="width:58%"></span></div>
+                </div>
+                <div class="ratio-card">
+                  <span>메뉴 B · 순두부찌개</span>
+                  <strong>42<small>%</small></strong>
+                  <p>319인분 준비 권장</p>
+                  <div class="progress"><span style="width:42%"></span></div>
+                </div>
+                <div class="ratio-donut" style="--a:58">
+                  <span>A 58%<small>B 42%</small></span>
+                </div>
+              </div>
+              <div class="ratio-reasons">
+                <div><b>과거 선호도</b><span>돈까스 메뉴 평균 선택률 55%, 최근 4주 +1%p</span></div>
+                <div><b>날씨 영향</b><span>비 예보 시 따뜻한 국물 메뉴 선택률 +3%p</span></div>
+                <div><b>요일 패턴</b><span>월요일은 메뉴 A 선택률이 평균보다 +1%p 높음</span></div>
+              </div>
+            </article>
+          </section>
+
+          <section class="prediction-grid">
+            <article class="panel hourly-panel">
+              <div class="panel-head">
+                <h2>시간대별 예측</h2>
+                <div class="segment">
+                  <button class="active" type="button">점심</button>
+                  <button type="button">저녁</button>
+                </div>
+              </div>
+              <div class="hour-bars">
+                <div style="--h:34"><b>66</b><span>11:30</span></div>
+                <div style="--h:58"><b>113</b><span>11:45</span></div>
+                <div style="--h:92"><b>180</b><span>12:00</span></div>
+                <div style="--h:100"><b>195</b><span>12:15</span></div>
+                <div style="--h:66"><b>129</b><span>12:30</span></div>
+                <div style="--h:28"><b>53</b><span>12:45</span></div>
+              </div>
+            </article>
+
+            <article class="panel prep-panel">
+              <div class="panel-head">
+                <h2>조리 준비 권장량</h2>
+                <button type="button">발주 반영 ›</button>
+              </div>
+              <div class="prep-list">
+                <div><span>총 조리량</span><b>760인분</b><em>여유 24인분</em></div>
+                <div><span>메뉴 A</span><b>441인분</b><em>돈까스 58%</em></div>
+                <div><span>메뉴 B</span><b>319인분</b><em>순두부찌개 42%</em></div>
+                <div><span>예상 잔반</span><b>31kg</b><em>잔반율 4.1%</em></div>
+              </div>
+            </article>
+
+            <article class="panel company-forecast-panel">
+              <div class="panel-head">
+                <h2>회사별 예측 인원</h2>
+                <button type="button">자세히 보기 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>회사명</th><th>예측</th><th>부재</th><th>전일 대비</th><th>신뢰도</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A전자</td><td>236명</td><td>12명</td><td class="up">32.1%</td><td>89%</td></tr>
+                  <tr><td>B솔루션</td><td>176명</td><td>9명</td><td class="up">23.9%</td><td>88%</td></tr>
+                  <tr><td>C엔지니어링</td><td>132명</td><td>8명</td><td class="up">17.9%</td><td>87%</td></tr>
+                  <tr><td>D테크</td><td>112명</td><td>6명</td><td class="up">15.2%</td><td>88%</td></tr>
+                  <tr><td>E소프트</td><td>80명</td><td>5명</td><td class="up">10.9%</td><td>85%</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel whatif-panel">
+              <div class="panel-head">
+                <h2>What-if 메뉴 시뮬레이션</h2>
+                <button type="button">시뮬레이션 비교 ›</button>
+              </div>
+              <div class="whatif-list">
+                <div><span>제육볶음</span><b>775명</b><em class="bad">+39명 (5.3%)</em></div>
+                <div><span>치킨 카라아게</span><b>758명</b><em class="bad">+22명 (3.0%)</em></div>
+                <div><span>생선까스</span><b>715명</b><em>-21명 (-2.8%)</em></div>
+                <div><span>카레라이스</span><b>693명</b><em>-43명 (-5.8%)</em></div>
+              </div>
+            </article>
+
+            <article class="panel action-panel">
+              <div class="panel-head">
+                <h2>운영 액션 큐</h2>
+                <button type="button">전체 보기 ›</button>
+              </div>
+              <div class="action-list">
+                <div><b>메뉴 A 441인분, 메뉴 B 319인분으로 준비</b><span>A/B 권장 비율</span></div>
+                <div><b>11:30-12:00 구간 조리 인력 1명 추가 배치</b><span>혼잡도 예상</span></div>
+                <div><b>추천 조리량 760인분 기준 잔반율 4.1% 예상</b><span>폐기 최소화</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="absence-page">
+          <section class="absence-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026.07.10 (금)</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">엑셀 업로드</button>
+              <button class="green-button" type="button">부재 데이터 동기화</button>
+            </div>
+          </section>
+
+          <section class="absence-kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">오늘 총 부재 예정 <span>ⓘ</span></div>
+              <strong class="green">118<small>명</small></strong>
+              <p>예상 식수 <b>-15.9%</b> 영향</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">재택근무</div>
+              <strong>68<small>명</small></strong>
+              <p>전일 대비 <b>▲ 27명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">휴가</div>
+              <strong>26<small>명</small></strong>
+              <p>이번 주 평균 대비 <b>▼ 1명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">외근/출장</div>
+              <strong>24<small>명</small></strong>
+              <p>점심 피크 영향 <b>-2.9%</b></p>
+            </article>
+          </section>
+
+          <section class="absence-detail-grid">
+            <article class="panel absence-impact-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>부재 유형별 식수 영향</h2>
+                  <p>회사관리자가 등록한 휴가, 재택, 외근, 출장 데이터가 예측에 반영됩니다.</p>
+                </div>
+                <button type="button">예측 반영 내역 ›</button>
+              </div>
+              <div class="impact-list">
+                <div><span>휴가</span><b>26명</b><em>-22식</em><i style="width:26%"></i></div>
+                <div><span>재택근무</span><b>68명</b><em>-61식</em><i style="width:68%"></i></div>
+                <div><span>외근</span><b>14명</b><em>-10식</em><i style="width:14%"></i></div>
+                <div><span>출장</span><b>10명</b><em>-8식</em><i style="width:10%"></i></div>
+              </div>
+            </article>
+
+            <article class="panel absence-company-panel">
+              <div class="panel-head">
+                <h2>회사별 부재 예정</h2>
+                <button type="button">회사별 상세 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>회사</th><th>휴가</th><th>재택</th><th>외근</th><th>출장</th><th>식수 영향</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A전자</td><td>8</td><td>22</td><td>4</td><td>2</td><td class="down">-32식</td></tr>
+                  <tr><td>B솔루션</td><td>6</td><td>16</td><td>3</td><td>2</td><td class="down">-24식</td></tr>
+                  <tr><td>C엔지니어링</td><td>5</td><td>12</td><td>3</td><td>2</td><td class="down">-20식</td></tr>
+                  <tr><td>D테크</td><td>4</td><td>10</td><td>2</td><td>2</td><td class="down">-16식</td></tr>
+                  <tr><td>E소프트</td><td>3</td><td>8</td><td>2</td><td>2</td><td class="down">-13식</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel absence-calendar-panel">
+              <div class="panel-head">
+                <h2>주간 부재 추이</h2>
+                <button type="button">월간 보기 ›</button>
+              </div>
+              <div class="week-bars">
+                <div style="--h:90"><b>72</b><span>월</span></div>
+                <div style="--h:101"><b>81</b><span>화</span></div>
+                <div style="--h:110"><b>88</b><span>수</span></div>
+                <div style="--h:99"><b>79</b><span>목</span></div>
+                <div style="--h:148"><b>118</b><span>금</span></div>
+              </div>
+              <p class="notice">ⓘ 금요일 부재가 높아 식수예측에서 추가 감산이 필요합니다.</p>
+            </article>
+
+            <article class="panel absence-list-panel">
+              <div class="panel-head">
+                <h2>최근 등록된 부재 내역</h2>
+                <button type="button">필터 ›</button>
+              </div>
+              <div class="absence-records">
+                <div><b>김하린</b><span>A전자 · 재택근무</span><em>2026.07.10</em></div>
+                <div><b>박도윤</b><span>B솔루션 · 오전 외근</span><em>2026.07.10</em></div>
+                <div><b>이서준</b><span>C엔지니어링 · 출장</span><em>2026.07.10-07.13</em></div>
+                <div><b>정민아</b><span>A전자 · 연차</span><em>2026.07.10</em></div>
+              </div>
+            </article>
+
+            <article class="panel absence-alert-panel">
+              <div class="panel-head">
+                <h2>데이터 품질 체크</h2>
+                <button type="button">해결하기 ›</button>
+              </div>
+              <div class="quality-list">
+                <div><b>B솔루션</b><span>재택 데이터가 어제보다 38% 급증했습니다.</span></div>
+                <div><b>D테크</b><span>출장 종료일이 비어 있는 항목 2건이 있습니다.</span></div>
+                <div><b>A전자</b><span>오늘 10:30 이후 추가 등록 6건이 예측에 반영됐습니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="menu-page">
+          <section class="menu-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026.07.10 (금) 점심</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">메뉴 템플릿</button>
+              <button class="green-button" type="button">다음 영업일 메뉴 등록</button>
+            </div>
+          </section>
+
+          <section class="menu-kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">오늘 투표 참여 <span>ⓘ</span></div>
+              <strong class="green">312<small>명</small></strong>
+              <p>전체 예상 식수 대비 <b>49.7%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">메뉴 A 선호도</div>
+              <strong>55<small>%</small></strong>
+              <p>돈까스 & 수제소스 <b>172명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">메뉴 B 선호도</div>
+              <strong>45<small>%</small></strong>
+              <p>불고기 덮밥 <b>140명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">평균 만족도</div>
+              <strong class="green">4.6<small>/5</small></strong>
+              <p>최근 7일 대비 <b>▲ 0.2</b></p>
+            </article>
+          </section>
+
+          <section class="menu-detail-grid">
+            <article class="panel menu-editor-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>오늘 메뉴 구성</h2>
+                  <p>메뉴 구성은 선호도와 식수예측의 주요 입력값으로 사용됩니다.</p>
+                </div>
+                <button type="button">수정하기 ›</button>
+              </div>
+              <div class="menu-choice-grid">
+                <section class="menu-choice-card selected">
+                  <div class="food-art cutlet" aria-label="돈까스 메뉴 이미지"></div>
+                  <div>
+                    <span>메뉴 A</span>
+                    <h3>돈까스 & 수제소스</h3>
+                    <p>밥, 미소장국, 양배추샐러드, 단무지</p>
+                    <strong>55%</strong>
+                  </div>
+                </section>
+                <section class="menu-choice-card">
                   <div class="food-art rice" aria-label="불고기 덮밥 메뉴 이미지"></div>
-                  <div class="progress"><span style="width:38%"></span></div>
+                  <div>
+                    <span>메뉴 B</span>
+                    <h3>불고기 덮밥</h3>
+                    <p>계란국, 김치, 오이무침, 과일</p>
+                    <strong>45%</strong>
+                  </div>
                 </section>
               </div>
             </article>
 
-            <article class="panel live-panel">
-              <div class="panel-head"><h2>실시간 식사 현황</h2><button type="button">자세히 보기 ›</button></div>
-              <div class="line-chart">
+            <article class="panel preference-panel">
+              <div class="panel-head">
+                <h2>선호도 분포</h2>
+                <button type="button">직군별 보기 ›</button>
+              </div>
+              <div class="preference-bars">
+                <div><span>A전자</span><b>A 68%</b><i><em style="width:68%"></em></i><strong>B 32%</strong></div>
+                <div><span>B솔루션</span><b>A 55%</b><i><em style="width:55%"></em></i><strong>B 45%</strong></div>
+                <div><span>C엔지니어링</span><b>A 49%</b><i><em style="width:49%"></em></i><strong>B 51%</strong></div>
+                <div><span>D테크</span><b>A 61%</b><i><em style="width:61%"></em></i><strong>B 39%</strong></div>\n                <div><span>E소프트</span><b>A 52%</b><i><em style="width:52%"></em></i><strong>B 48%</strong></div>
+              </div>
+            </article>
+
+            <article class="panel menu-impact-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>메뉴별 식수예측 영향</h2>
+                  <p>과거 메뉴 성과, 날씨, 요일 패턴을 기준으로 내일 수요를 추정합니다.</p>
+                </div>
+                <button type="button">시뮬레이션 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>후보 메뉴</th><th>예상 식수</th><th>A/B 비율</th><th>잔반 위험</th><th>추천</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>돈까스 / 순두부찌개</td><td>736명</td><td>58 / 42</td><td class="up">낮음</td><td><span class="mini-pill">기준</span></td></tr>
+                  <tr><td>제육볶음 / 냉모밀</td><td>775명</td><td>61 / 39</td><td class="bad-text">보통</td><td><span class="mini-pill good">수요↑</span></td></tr>
+                  <tr><td>생선까스 / 우동</td><td>715명</td><td>46 / 54</td><td class="up">낮음</td><td><span class="mini-pill">안정</span></td></tr>
+                  <tr><td>카레라이스 / 샐러드</td><td>693명</td><td>64 / 36</td><td class="bad-text">높음</td><td><span class="mini-pill warn">주의</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel taste-panel">
+              <div class="panel-head">
+                <h2>선호도 영향 요인</h2>
+                <button type="button">상세 분석 ›</button>
+              </div>
+              <div class="taste-list">
+                <div><b>날씨</b><span>비 예보일에는 국물 메뉴 선택률이 평균 +3%p 상승</span></div>
+                <div><b>요일</b><span>화요일은 튀김/돈까스 메뉴 선호가 평균 +5%p 높음</span></div>
+                <div><b>최근 만족도</b><span>불고기 덮밥 만족도 4.8점으로 재등장 시 수요 안정적</span></div>
+              </div>
+            </article>
+
+            <article class="panel voc-menu-panel">
+              <div class="panel-head">
+                <h2>메뉴 VOC</h2>
+                <button type="button">전체 보기 ›</button>
+              </div>
+              <div class="menu-voc-list">
+                <div><b>🙂</b><span>돈까스 소스가 맛있었어요. 다음에도 나오면 좋겠어요.</span><em>A전자</em></div>
+                <div><b>😐</b><span>덮밥 양이 조금 부족했습니다.</span><em>B솔루션</em></div>
+                <div><b>🙂</b><span>샐러드가 신선해서 좋았습니다.</span><em>C엔지니어링</em></div>
+              </div>
+            </article>
+
+            <article class="panel menu-action-panel">
+              <div class="panel-head">
+                <h2>운영 제안</h2>
+                <button type="button">제안 저장 ›</button>
+              </div>
+              <div class="action-list">
+                <div><b>다음 영업일(월) 비 예보로 B메뉴를 국물류로 구성하면 선택률 +3%p 예상</b><span>날씨 반영</span></div>
+                <div><b>돈까스 계열은 A전자 선호가 높아 A메뉴 비율 58% 이상 권장</b><span>회사별 선호</span></div>
+                <div><b>불고기 덮밥 재등장 시 만족도는 높지만 예상 식수 변동은 작음</b><span>VOC 기반</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="meal-status-page">
+          <section class="meal-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026.07.10 (금) 점심 운영</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">QR 화면 열기</button>
+              <button class="green-button" type="button">수기 입력</button>
+            </div>
+          </section>
+
+          <section class="meal-kpi-grid">
+            <article class="kpi-card realtime">
+              <div>
+                <div class="card-title">실시간 식사 인원 <span>ⓘ</span></div>
+                <strong class="green">345<small>명</small></strong>
+                <p>예상 628명 대비</p>
+                <b>54.9%</b>
+              </div>
+              <div class="donut" style="--p:55"><span>55%</span></div>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">현재 혼잡도</div>
+              <strong>보통</strong>
+              <p>12:10 기준 <b>대기 4분</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">인증 성공률</div>
+              <strong class="green">98.7<small>%</small></strong>
+              <p>실패/중복 <b>6건</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">예상 잔여 식수</div>
+              <strong>283<small>명</small></strong>
+              <p>13:20 이후 <b>여유 구간</b></p>
+            </article>
+          </section>
+
+          <section class="meal-status-grid">
+            <article class="panel meal-live-chart-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>시간대별 실시간 식사 현황</h2>
+                  <p>예상 인원과 실제 체크인을 비교해 운영 속도를 확인합니다.</p>
+                </div>
+                <button type="button">라이브 새로고침 ›</button>
+              </div>
+              <div class="line-chart status-chart">
                 <div class="legend"><span></span>예상 인원 <b></b>실제 식사 인원</div>
-                <svg viewBox="0 0 720 260" role="img" aria-label="시간대별 식사 현황">
+                <svg viewBox="0 0 720 260" role="img" aria-label="시간대별 실시간 식사 현황">
                   <defs>
-                    <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                    <linearGradient id="statusFill" x1="0" x2="0" y1="0" y2="1">
                       <stop offset="0%" stop-color="#47a537" stop-opacity=".22" />
                       <stop offset="100%" stop-color="#47a537" stop-opacity="0" />
                     </linearGradient>
@@ -176,9 +1347,9 @@
                     <line x1="40" x2="650" y1="234" y2="234" />
                   </g>
                   <path class="expected" d="M40 234 C90 228 124 210 165 178 C206 146 242 112 286 96 C330 80 362 28 410 54 C456 79 482 140 532 154 C582 168 604 212 650 224" />
-                  <path class="actual-fill" d="M40 234 C96 232 142 220 188 188 C232 154 264 146 316 136 C366 126 392 98 438 118 C486 139 510 166 558 176 C604 188 624 218 650 228 L650 234 L40 234 Z" />
-                  <path class="actual" d="M40 234 C96 232 142 220 188 188 C232 154 264 146 316 136 C366 126 392 98 438 118 C486 139 510 166 558 176 C604 188 624 218 650 228" />
-                  <circle cx="438" cy="118" r="5" />
+                  <path class="actual-fill" fill="url(#statusFill)" d="M40 234 C92 232 126 224 178 202 C232 178 260 138 306 128 C356 118 384 96 430 118 C482 142 510 168 558 182 C604 198 628 222 650 228 L650 234 L40 234 Z" />
+                  <path class="actual" d="M40 234 C92 232 126 224 178 202 C232 178 260 138 306 128 C356 118 384 96 430 118 C482 142 510 168 558 182 C604 198 628 222 650 228" />
+                  <circle cx="430" cy="118" r="5" />
                   <g class="labels">
                     <text x="74" y="254">10시</text>
                     <text x="236" y="254">11시</text>
@@ -186,211 +1357,1523 @@
                     <text x="552" y="254">13시</text>
                   </g>
                 </svg>
-                <div class="tooltip-card">12:10<br /><b>실제 412명</b><br />예상 742명</div>
-                <div class="current-rate">
-                  <span>현재 이용률</span>
-                  <div class="donut" style="--p:55"><span>55%<small>(412 / 742)</small></span></div>
-                </div>
+                <div class="tooltip-card">12:10<br /><b>실제 345명</b><br />예상 341명</div>
               </div>
             </article>
 
-            <article class="panel notice-panel">
-              <div class="panel-head"><h2>최근 공지사항</h2><button type="button">더보기 ›</button></div>
-              <p><span>NEW</span> 5월 22일 (목) 메뉴 안내 <time>2025.05.19</time></p>
-            </article>
-
-            <article class="panel voc-panel">
-              <div class="panel-head"><h2>최근 VOC</h2><button type="button">더보기 ›</button></div>
-              <p><b>🙂</b> 오늘 불고기 덮밥 정말 맛있었어요! <time>2025.05.20</time></p>
-              <small>B솔루션 / 홍길동 대리</small>
-            </article>
-
-            <article class="panel settlement-panel">
-              <div class="panel-head"><h2>정산 현황 요약</h2><button type="button">자세히 보기 ›</button></div>
-              <div>
-                <p>총 7개사 중 <b>5개사 완료</b></p>
-                <span>미정산 금액</span>
-                <strong>₩ 2,350,000</strong>
+            <article class="panel auth-channel-panel">
+              <div class="panel-head">
+                <h2>인증 채널 현황</h2>
+                <button type="button">채널 설정 ›</button>
               </div>
-              <div class="donut small" style="--p:71"></div>
-              <ul>
-                <li><span></span>정산 완료 5 (71%)</li>
-                <li><span></span>정산 대기 2 (29%)</li>
-              </ul>
+              <div class="channel-status-list">
+                <div><span>QR 체크인</span><b>211명</b><i><em style="width:62%"></em></i></div>
+                <div><span>사원증</span><b>118명</b><i><em style="width:34%"></em></i></div>
+                <div><span>수기 입력</span><b>16명</b><i><em style="width:4%"></em></i></div>
+              </div>
+            </article>
+
+            <article class="panel meal-company-panel">
+              <div class="panel-head">
+                <h2>회사별 이용 현황</h2>
+                <button type="button">상세 보기 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>회사</th><th>실제</th><th>예상</th><th>진행률</th><th>상태</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>A전자</td><td>103명</td><td>201명</td><td>51.2%</td><td><span class="mini-pill">정상</span></td></tr>
+                  <tr><td>B솔루션</td><td>84명</td><td>151명</td><td>55.6%</td><td><span class="mini-pill">정상</span></td></tr>
+                  <tr><td>C엔지니어링</td><td>71명</td><td>113명</td><td>62.8%</td><td><span class="mini-pill warn">빠름</span></td></tr>
+                  <tr><td>D테크</td><td>52명</td><td>94명</td><td>55.3%</td><td><span class="mini-pill">정상</span></td></tr>
+                  <tr><td>E소프트</td><td>35명</td><td>69명</td><td>50.7%</td><td><span class="mini-pill">여유</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel live-log-panel">
+              <div class="panel-head">
+                <h2>실시간 Meal Log</h2>
+                <button type="button">CSV 내보내기 ›</button>
+              </div>
+              <div class="meal-log-list">
+                <div><b>12:10:42</b><span>김하린 · A전자</span><em>QR</em></div>
+                <div><b>12:10:38</b><span>박도윤 · B솔루션</span><em>사원증</em></div>
+                <div><b>12:10:27</b><span>방문자 2명 · C엔지니어링</span><em>수기</em></div>
+                <div><b>12:10:19</b><span>이서준 · D테크</span><em>QR</em></div>
+                <div><b>12:10:11</b><span>정민아 · A전자</span><em>QR</em></div>
+              </div>
+            </article>
+
+            <article class="panel anomaly-panel">
+              <div class="panel-head">
+                <h2>확인 필요 로그</h2>
+                <button type="button">처리하기 ›</button>
+              </div>
+              <div class="quality-list">
+                <div><b>중복 체크인 2건</b><span>같은 사원증으로 3분 내 재인증된 기록이 있습니다.</span></div>
+                <div><b>수기 입력 검토 4건</b><span>방문자 동반 식수는 정산 회사 확인이 필요합니다.</span></div>
+                <div><b>C엔지니어링 이용 속도 빠름</b><span>예상 대비 진행률이 9%p 높습니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel meal-action-panel">
+              <div class="panel-head">
+                <h2>운영 제안</h2>
+                <button type="button">알림 보내기 ›</button>
+              </div>
+              <div class="action-list">
+                <div><b>12:20까지 현재 속도가 유지되면 13:00 이후 잔여 식수 78명 수준</b><span>준비량 여유</span></div>
+                <div><b>C엔지니어링 이용률이 빨라 12:20 구간 배식 동선 확인 권장</b><span>혼잡 예방</span></div>
+                <div><b>수기 입력 16명 중 방문자 7명은 정산 회사 매핑 필요</b><span>정산 연계</span></div>
+              </div>
             </article>
           </section>
         </section>
 
-        <section class="page-view" id="prediction-page">
-          <section class="prediction-hero">
-            <article class="prediction-summary">
-              <div class="panel-head plain">
+        <section class="page-view" id="settlement-page">
+          <section class="settlement-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026년 6월 정산</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">정산 기준 확인</button>
+              <button class="green-button" type="button">정산서 일괄 생성</button>
+            </div>
+          </section>
+
+          <section class="settlement-kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">이번 달 청구 예정 <span>ⓘ</span></div>
+              <strong class="green money">₩ 104,020,000</strong>
+              <p>총 식수 <b>14,860식</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">정산 완료</div>
+              <strong>4<small>/5개사</small></strong>
+              <p>진행률 <b>80%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">미정산 금액</div>
+              <strong class="green money">₩ 19,040,000</strong>
+              <p>C엔지니어링 <b>승인 대기</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">급여 차감 대상</div>
+              <strong>7,260<small>건</small></strong>
+              <p>파일 생성 가능 <b>2개사</b></p>
+            </article>
+          </section>
+
+          <section class="settlement-detail-grid">
+            <article class="panel settlement-main-panel">
+              <div class="panel-head">
                 <div>
-                  <h2>내일 점심 식수 예측</h2>
-                  <p>2025.05.21 (수) · 판교 본사 구내식당</p>
+                  <h2>회사별 월 정산 현황</h2>
+                  <p>Meal Log를 계약 단가와 정산 방식에 따라 자동 집계합니다.</p>
                 </div>
-                <button class="green-button" type="button">예측 재계산</button>
+                <button type="button">CSV 내보내기 ›</button>
               </div>
-              <div class="prediction-number">
-                <span>총 예상 식수</span>
-                <strong>742<small>명</small></strong>
-                <p>추천 조리량 <b>770인분</b> · 여유 28인분 (3.8%)</p>
-              </div>
-              <div class="confidence-row">
-                <div><span>예측 신뢰도</span><b>94%</b></div>
-                <div><span>피크 시간</span><b>12:05-12:25</b></div>
-                <div><span>예상 잔반</span><b class="green">14kg</b></div>
-              </div>
-            </article>
-            <article class="panel factor-panel">
-              <div class="panel-head"><h2>예측 영향 요인</h2><button type="button">데이터 보기 ›</button></div>
-              <div class="factor-grid">
-                <article>
-                  <span>부재율</span>
-                  <strong>18%</strong>
-                  <p>오늘 12.3% 대비 증가</p>
-                </article>
-                <article>
-                  <span>선호 메뉴</span>
-                  <strong>돈까스</strong>
-                  <p>최근 3일 연속 1위</p>
-                </article>
-                <article>
-                  <span>기온</span>
-                  <strong>24°C</strong>
-                  <p>실내 외 1도 차</p>
-                </article>
-                <article>
-                  <span>예약 현황</span>
-                  <strong>412건</strong>
-                  <p>전주 대비 +8%</p>
-                </article>
-              </div>
-            </article>
-          </section>
-
-          <section class="prediction-details">
-            <article class="panel table-panel">
-              <div class="panel-head"><h2>시간대별 예측 수요</h2></div>
               <table>
-                <thead><tr><th>시간</th><th>예상 인원</th><th>조리 권장</th><th>비율</th></tr></thead>
+                <thead>
+                  <tr><th>회사</th><th>식수</th><th>단가</th><th>청구액</th><th>정산 방식</th><th>상태</th></tr>
+                </thead>
                 <tbody>
-                  <tr><td>11:30</td><td>108명</td><td>110인분</td><td>15%</td></tr>
-                  <tr><td>12:00</td><td>218명</td><td>230인분</td><td>29%</td></tr>
-                  <tr><td>12:30</td><td>204명</td><td>210인분</td><td>28%</td></tr>
-                  <tr><td>13:00</td><td>110명</td><td>120인분</td><td>15%</td></tr>
-                  <tr><td>13:30</td><td>102명</td><td>100인분</td><td>13%</td></tr>
+                  <tr><td>A전자</td><td>5,320식</td><td>7,000원</td><td>37,240,000원</td><td>급여 차감</td><td><span class="mini-pill good">완료</span></td></tr>
+                  <tr><td>B솔루션</td><td>3,860식</td><td>7,000원</td><td>27,020,000원</td><td>월 청구</td><td><span class="mini-pill good">완료</span></td></tr>
+                  <tr><td>C엔지니어링</td><td>2,720식</td><td>7,000원</td><td>19,040,000원</td><td>월 청구</td><td><span class="mini-pill warn">대기</span></td></tr>
+                  <tr><td>D테크</td><td>1,940식</td><td>7,000원</td><td>13,580,000원</td><td>급여 차감</td><td><span class="mini-pill good">완료</span></td></tr>
+                  <tr><td>E소프트</td><td>1,020식</td><td>7,000원</td><td>7,140,000원</td><td>월 청구</td><td><span class="mini-pill good">완료</span></td></tr>
                 </tbody>
               </table>
             </article>
-            <article class="panel insight-panel">
-              <div class="panel-head"><h2>추천 조리 전략</h2></div>
-              <ul>
-                <li>12시대 집중 대응, 12:00~12:30에 조리량을 높이세요.</li>
-                <li>잔반을 줄이기 위해 A메뉴를 6% 감량하고 B메뉴를 4% 보강하세요.</li>
-                <li>잔반 예상 14kg, 전일 대비 3kg 감소 예상.</li>
-              </ul>
-            </article>
-          </section>
-        </section>
 
-        <section class="page-view" id="menu-page">
-          <section class="panel menu-overview">
-            <div class="panel-head plain">
-              <div><h2>메뉴 관리</h2><p>오늘과 내일 메뉴를 확인하고 배치할 수 있습니다.</p></div>
-              <button class="green-button" type="button">새 메뉴 등록</button>
-            </div>
-            <div class="menu-table-wrap">
-              <table>
-                <thead><tr><th>메뉴</th><th>설명</th><th>예상 선호도</th><th>재고</th><th>상태</th></tr></thead>
-                <tbody>
-                  <tr><td>돈까스</td><td>수제 돈까스 & 소스</td><td><strong>62%</strong></td><td>120인분</td><td class="tag active">판매 중</td></tr>
-                  <tr><td>불고기 덮밥</td><td>달콤한 불고기와 밥</td><td><strong>38%</strong></td><td>90인분</td><td class="tag">예약</td></tr>
-                  <tr><td>김치찌개</td><td>뜨끈한 국물과 고기</td><td><strong>48%</strong></td><td>80인분</td><td class="tag warning">준비 중</td></tr>
-                  <tr><td>샐러드</td><td>신선한 채소와 드레싱</td><td><strong>25%</strong></td><td>50인분</td><td class="tag muted">마감 임박</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-          <section class="panel menu-actions">
-            <div class="panel-head"><h2>오늘 배치 우선순위</h2></div>
-            <ul>
-              <li>1. 돈까스 - 인기 메뉴로 재고 120인분 확보</li>
-              <li>2. 불고기 덮밥 - 예약 주문 90인분</li>
-              <li>3. 김치찌개 - 아침 재료 확인 필요</li>
-              <li>4. 샐러드 - 채소 신선도 점검</li>
-            </ul>
+            <article class="panel settlement-status-panel">
+              <div class="panel-head">
+                <h2>정산 진행률</h2>
+                <button type="button">승인 요청 ›</button>
+              </div>
+              <div class="settlement-progress-card">
+                <div class="donut" style="--p:71"><span>80%<small>4 / 5개사</small></span></div>
+                <div>
+                  <p><b>정산 완료</b><span>4개사</span></p>
+                  <p><b>승인 대기</b><span>1개사</span></p>
+                  <p><b>검토 필요</b><span>0개사</span></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel contract-panel">
+              <div class="panel-head">
+                <h2>계약/정산 기준</h2>
+                <button type="button">계약 관리 ›</button>
+              </div>
+              <div class="contract-list">
+                <div><b>A전자</b><span>11:30-13:00 · 7,000원 · 급여 차감</span><em>2026.01.01-12.31</em></div>
+                <div><b>B솔루션</b><span>11:30-12:40 · 7,000원 · 월 청구</span><em>2026.03.01-2027.02.28</em></div>
+                <div><b>C엔지니어링</b><span>12:00-13:00 · 7,000원 · 월 청구</span><em>2026.05.01-12.31</em></div>
+              </div>
+            </article>
+
+            <article class="panel deduction-panel">
+              <div class="panel-head">
+                <h2>급여 차감 파일</h2>
+                <button type="button">파일 생성 ›</button>
+              </div>
+              <div class="deduction-list">
+                <div><span>A전자</span><b>5,320건</b><em>생성 가능</em></div>
+                <div><span>D테크</span><b>1,940건</b><em>생성 가능</em></div>
+                <div><span>방문자 미매핑</span><b>7건</b><em class="bad-text">회사 매핑 필요</em></div>
+              </div>
+            </article>
+
+            <article class="panel settlement-issue-panel">
+              <div class="panel-head">
+                <h2>확인 필요 항목</h2>
+                <button type="button">전체 처리 ›</button>
+              </div>
+              <div class="quality-list">
+                <div><b>C엔지니어링 승인 대기</b><span>6월 3주차 방문자 18식의 청구 회사 확인이 필요합니다.</span></div>
+                <div><b>방문자 수기 입력 7건</b><span>정산 대상 회사가 비어 있어 매핑 후 정산서에 반영됩니다.</span></div>
+                <div><b>B솔루션 단가 변경 예정</b><span>2026.08.01부터 계약 단가가 7,200원으로 변경됩니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel settlement-action-panel">
+              <div class="panel-head">
+                <h2>정산 액션 큐</h2>
+                <button type="button">알림 발송 ›</button>
+              </div>
+              <div class="action-list">
+                <div><b>C엔지니어링 정산서 승인 요청 메일 발송</b><span>승인 대기</span></div>
+                <div><b>방문자 수기 입력 7건 회사 매핑 후 청구액 재계산</b><span>검토 필요</span></div>
+                <div><b>A전자, D테크 급여 차감 파일 다운로드 가능</b><span>파일 생성</span></div>
+              </div>
+            </article>
           </section>
         </section>
 
         <section class="page-view" id="report-page">
-          <section class="panel report-hero">
-            <div class="panel-head plain">
-              <div><h2>리포트</h2><p>최근 7일 운영 데이터를 분석합니다.</p></div>
-              <button class="green-button" type="button">PDF 다운로드</button>
+          <section class="report-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026년 6월 운영 리포트</strong>
+              <button type="button">›</button>
             </div>
-            <div class="report-summary-grid">
-              <article>
-                <span>평균 이용률</span>
-                <strong>82%</strong>
-                <p>전주 대비 +3%</p>
-              </article>
-              <article>
-                <span>잔반 감소</span>
-                <strong>18%</strong>
-                <p>금주 9kg 감소</p>
-              </article>
-              <article>
-                <span>안전 점검</span>
-                <strong>통과</strong>
-                <p>최근 1회 이상 점검 완료</p>
-              </article>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">PDF 미리보기</button>
+              <button class="green-button" type="button">리포트 다운로드</button>
             </div>
           </section>
 
-          <section class="panel report-table">
-            <div class="panel-head"><h2>주간 지표</h2></div>
-            <table>
-              <thead><tr><th>날짜</th><th>식수</th><th>잔반</th><th>절감액</th><th>특이사항</th></tr></thead>
-              <tbody>
-                <tr><td>05.14</td><td>734명</td><td>15kg</td><td>₩1,210,000</td><td>불고기 호응</td></tr>
-                <tr><td>05.15</td><td>758명</td><td>13kg</td><td>₩1,280,000</td><td>점심 공단</td></tr>
-                <tr><td>05.16</td><td>780명</td><td>18kg</td><td>₩1,190,000</td><td>기온 상승</td></tr>
-                <tr><td>05.17</td><td>812명</td><td>12kg</td><td>₩1,350,000</td><td>메뉴 개선</td></tr>
-                <tr><td>05.18</td><td>720명</td><td>10kg</td><td>₩1,270,000</td><td>설문 만족</td></tr>
-              </tbody>
-            </table>
+          <section class="kpi-grid">
+            <article class="kpi-card">
+              <div class="card-title">이번 달 폐기 절감액 <span>ⓘ</span></div>
+              <strong class="green money">₩ 1,250,000</strong>
+              <p>전년 동월 대비 <b>▲ 12%</b> · 잔반율 4.1%</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">월 누적 식수</div>
+              <strong>14,860<small>식</small></strong>
+              <p>전월 대비 <b>▲ 6.2%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">예측 정확도 (30일)</div>
+              <strong>87.4<small>%</small></strong>
+              <p>전월 대비 <b>▲ 2.1%p</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">자동화 절감 시간</div>
+              <strong class="green">47<small>시간/월</small></strong>
+              <p>수작업 대비 <b>-91%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">평균 만족도</div>
+              <strong>4.6<small>/5</small></strong>
+              <p>VOC 긍정 비율 <b>84%</b></p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2 chart-hero">
+              <div class="panel-head">
+                <div>
+                  <h2>음식물 폐기 절감 추이</h2>
+                  <p>월별 잔반량(kg) · 식수예측과 메뉴 선호도 반영을 시작한 2월 이후 꾸준히 줄고 있습니다.</p>
+                </div>
+                <div class="legend-chips">
+                  <span class="chip range-chip">2026년 2월 - 6월</span>
+                  <span class="chip range-chip">누적 절감 ₩ 5,420,000</span>
+                </div>
+              </div>
+              <div class="line-chart status-chart daily-chart">
+                <svg viewBox="0 0 1200 320" role="img" aria-label="월별 잔반량 추이 (kg)">
+                  <defs>
+                    <linearGradient id="wasteFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#47a537" stop-opacity=".26" />
+                      <stop offset="100%" stop-color="#47a537" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="wasteLine" x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0%" stop-color="#5ec24d" />
+                      <stop offset="100%" stop-color="#188f2b" />
+                    </linearGradient>
+                  </defs>
+                  <g class="grid-lines">
+                    <line x1="70" x2="1170" y1="20" y2="20" />
+                    <line x1="70" x2="1170" y1="82" y2="82" />
+                    <line x1="70" x2="1170" y1="145" y2="145" />
+                    <line x1="70" x2="1170" y1="208" y2="208" />
+                    <line x1="70" x2="1170" y1="270" y2="270" />
+                  </g>
+                  <g class="y-labels">
+                    <text x="58" y="24">200kg</text>
+                    <text x="58" y="86">175</text>
+                    <text x="58" y="149">150</text>
+                    <text x="58" y="212">125</text>
+                    <text x="58" y="274">100</text>
+                  </g>
+                  <path class="actual-fill" style="fill: url(#wasteFill)" d="M70 65 L345 100 L620 148 L895 168 L1170 200 L1170 270 L70 270 Z" />
+                  <path class="actual" style="stroke: url(#wasteLine)" d="M70 65 L345 100 L620 148 L895 168 L1170 200" />
+                  <circle cx="70" cy="65" r="4.5" />
+                  <circle cx="345" cy="100" r="4.5" />
+                  <circle cx="620" cy="148" r="4.5" />
+                  <circle cx="895" cy="168" r="4.5" />
+                  <circle class="last-halo" cx="1170" cy="200" r="13" />
+                  <circle cx="1170" cy="200" r="6.5" />
+                  <g class="point-values">
+                    <text x="70" y="49">182kg</text>
+                    <text x="345" y="84">168kg</text>
+                    <text x="620" y="132">149kg</text>
+                    <text x="895" y="152">141kg</text>
+                    <text x="1152" y="184">128kg</text>
+                  </g>
+                  <g class="labels">
+                    <text x="70" y="302">2월</text>
+                    <text x="345" y="302">3월</text>
+                    <text x="620" y="302">4월</text>
+                    <text x="895" y="302">5월</text>
+                    <text x="1164" y="302">6월</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="chart-stats">
+                <div><span>폐기량 (2월 대비)</span><b>-30%</b></div>
+                <div><span>이번 달 절감액</span><b>₩ 1,250,000</b></div>
+                <div><span>잔반율</span><b>5.3% → 4.1%</b></div>
+                <div><span>CO₂ 배출 환산</span><b class="green">-212kg</b></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>자동화 효과 — 사람 손을 거치지 않은 업무</h2>
+                  <p>이번 달 TASPA가 자동으로 처리한 운영 업무입니다. 수작업 대비 월 47시간이 절감되었습니다.</p>
+                </div>
+                <div class="legend-chips">
+                  <span class="chip range-chip">2026년 6월</span>
+                </div>
+              </div>
+              <div class="indicator-list auto-list">
+                <div><span>식수 집계 (Meal Log)</span><i style="width:99%"></i><b>14,860건</b><em class="mini-pill good">99.2% 자동</em></div>
+                <div><span>부재 데이터 반영</span><i style="width:100%"></i><b>2,140건</b><em class="mini-pill good">100% 자동</em></div>
+                <div><span>조직 변경 반영</span><i style="width:100%"></i><b>23건</b><em class="mini-pill good">100% 자동</em></div>
+                <div><span>정산서 · 청구서 생성</span><i style="width:100%"></i><b>5건</b><em class="mini-pill good">100% 자동</em></div>
+                <div><span>리포트 생성 · 발송</span><i style="width:100%"></i><b>9건</b><em class="mini-pill good">100% 자동</em></div>
+                <div><span>사람이 처리한 업무</span><i style="width:4%"></i><b>8건</b><em class="mini-pill warn">승인 · 예외</em></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <h2>주간 운영 요약</h2>
+                <button type="button">데이터 보기 ›</button>
+              </div>
+              <table>
+                <thead><tr><th>주차</th><th>예상 식수</th><th>실제 식수</th><th>정확도</th><th>잔반</th><th>만족도</th></tr></thead>
+                <tbody>
+                  <tr><td>1주차</td><td>1,982</td><td>1,806</td><td>86.9%</td><td>34kg</td><td>4.5</td></tr>
+                  <tr><td>2주차</td><td>2,214</td><td>2,071</td><td>87.8%</td><td>33kg</td><td>4.6</td></tr>
+                  <tr><td>3주차</td><td>2,196</td><td>2,085</td><td>88.4%</td><td>31kg</td><td>4.7</td></tr>
+                  <tr><td>4주차</td><td>2,304</td><td>2,191</td><td>89.2%</td><td>30kg</td><td>4.6</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>이번 달 핵심 인사이트</h2><button type="button">공유 ›</button></div>
+              <div class="quality-list">
+                <div><b>정확도 개선 흐름</b><span>주차가 지날수록 정확도가 86.9% → 89.2%로 상승 — 태깅 데이터가 쌓일수록 좋아집니다.</span></div>
+                <div><b>금요일 패턴</b><span>재택 증가로 금요일 식수가 평균 -95명. 그룹웨어 부재 반영이 감산을 담당했습니다.</span></div>
+                <div><b>메뉴 영향</b><span>비 오는 날 국물 메뉴 역전 사례가 선호도 예측에 학습되었습니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>자동 리포트 발송</h2><button type="button">예약 설정 ›</button></div>
+              <div class="contract-list">
+                <div><b>주간 운영 리포트</b><span>매주 월요일 09:00 · 식당관리자</span><em>활성</em></div>
+                <div><b>월간 정산 리포트</b><span>매월 1일 10:00 · 회사관리자 5명</span><em>활성</em></div>
+                <div><b>VOC 요약 리포트</b><span>매주 금요일 16:00 · 운영팀</span><em>활성</em></div>
+              </div>
+              <p class="notice">ⓘ 모든 리포트는 PDF로 자동 생성되어 메일로 발송됩니다.</p>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="organization-page">
+          <section class="organization-toolbar">
+            <div class="date-range"><strong>판교 본사 구내식당 조직 관리</strong></div>
+            <div class="absence-actions"><button class="ghost-button" type="button">초대 링크 복사</button><button class="green-button" type="button">관리자 초대</button></div>
+          </section>
+
+          <section class="organization-kpi-grid">
+            <article class="kpi-card"><div class="card-title">연결 회사</div><strong class="green">5<small>개사</small></strong><p>활성 계약 <b>5건</b></p></article>
+            <article class="kpi-card"><div class="card-title">등록 직원</div><strong>1,000<small>명</small></strong><p>이번 달 신규 <b>21명</b></p></article>
+            <article class="kpi-card"><div class="card-title">관리자 계정</div><strong>9<small>명</small></strong><p>식당 3명 · 회사 6명</p></article>
+            <article class="kpi-card"><div class="card-title">권한 검토</div><strong class="green">2<small>건</small></strong><p>퇴사자 계정 확인 필요</p></article>
+          </section>
+
+          <section class="organization-grid">
+            <article class="panel organization-company-panel">
+              <div class="panel-head"><div><h2>Workspace 연결 현황</h2><p>구내식당을 공동 이용하는 회사와 계약 상태를 관리합니다.</p></div><button type="button">계약 추가 ›</button></div>
+              <table>
+                <thead><tr><th>회사</th><th>직원</th><th>관리자</th><th>계약 상태</th><th>정산 방식</th></tr></thead>
+                <tbody>
+                  <tr><td>A전자</td><td>320명</td><td>3명</td><td><span class="mini-pill good">활성</span></td><td>급여 차감</td></tr>
+                  <tr><td>B솔루션</td><td>240명</td><td>2명</td><td><span class="mini-pill good">활성</span></td><td>월 청구</td></tr>
+                  <tr><td>C엔지니어링</td><td>180명</td><td>2명</td><td><span class="mini-pill warn">검토</span></td><td>월 청구</td></tr>
+                  <tr><td>D테크</td><td>150명</td><td>1명</td><td><span class="mini-pill good">활성</span></td><td>급여 차감</td></tr>
+                  <tr><td>E소프트</td><td>110명</td><td>1명</td><td><span class="mini-pill good">활성</span></td><td>월 청구</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel admin-panel">
+              <div class="panel-head"><h2>관리자 권한</h2><button type="button">권한 편집 ›</button></div>
+              <div class="contract-list">
+                <div><b>김민지</b><span>식당 관리자 · 전체 권한</span><em>활성</em></div>
+                <div><b>오민재</b><span>식당 매니저 · 식사 현황/수기 입력</span><em>활성</em></div>
+                <div><b>우성욱</b><span>A전자 회사관리자 · 직원/정산 조회</span><em>활성</em></div>
+                <div><b>최유진</b><span>B솔루션 회사관리자 · 직원/부재 등록</span><em>초대 대기</em></div>
+              </div>
+            </article>
+
+            <article class="panel invite-panel">
+              <div class="panel-head"><h2>초대/동기화 상태</h2><button type="button">동기화 실행 ›</button></div>
+              <div class="quality-list">
+                <div><b>HR 데이터 동기화</b><span>A전자, B솔루션은 매일 06:00 자동 동기화됩니다.</span></div>
+                <div><b>초대 대기</b><span>회사관리자 2명, 식당 매니저 1명이 초대 메일을 열지 않았습니다.</span></div>
+                <div><b>퇴사자 검토</b><span>최근 30일 미사용 계정 2건의 권한 회수가 필요합니다.</span></div>
+              </div>
+            </article>
           </section>
         </section>
 
         <section class="page-view" id="settings-page">
-          <section class="panel settings-panel">
-            <div class="panel-head plain">
-              <div><h2>설정</h2><p>계정과 식당 환경을 빠르게 수정하세요.</p></div>
-              <button class="green-button" type="button">변경 사항 저장</button>
+          <section class="settings-toolbar">
+            <div class="date-range"><strong>TASPA 식당 설정</strong></div>
+            <div class="absence-actions"><button class="ghost-button" type="button">변경 이력</button><button class="green-button" type="button">설정 저장</button></div>
+          </section>
+
+          <section class="settings-grid">
+            <article class="panel settings-main-panel">
+              <div class="panel-head"><div><h2>식당 기본 정보</h2><p>운영 시간, 식대, 인증 방식 등 핵심 설정입니다.</p></div><button type="button">수정 ›</button></div>
+              <div class="settings-form-grid">
+                <label><span>식당명</span><input value="판교 본사 구내식당" /></label>
+                <label><span>점심 운영 시간</span><input value="11:30 - 13:00" /></label>
+                <label><span>기본 식대</span><input value="7,000원" /></label>
+                <label><span>정산 기준</span><input value="Meal Log 확정 기준" /></label>
+              </div>
+            </article>
+
+            <article class="panel auth-settings-panel">
+              <div class="panel-head"><h2>식수 인증 방식</h2><button type="button">QR 재발급 ›</button></div>
+              <div class="settings-toggle-list">
+                <div><b>QR 체크인</b><span>활성</span><em></em></div>
+                <div><b>사원증 태깅</b><span>활성</span><em></em></div>
+                <div><b>수기 입력</b><span>매니저만 가능</span><em></em></div>
+              </div>
+            </article>
+
+            <article class="panel prediction-settings-panel">
+              <div class="panel-head"><h2>예측 모델 설정</h2><button type="button">모델 로그 ›</button></div>
+              <div class="quality-list">
+                <div><b>반영 데이터</b><span>과거 식수, 메뉴, 날씨, 부재, 행사, 요일 효과</span></div>
+                <div><b>재계산 시점</b><span>매일 18:00 자동 예측, 운영 당일 10:30 보정</span></div>
+                <div><b>권장 여유량</b><span>예상 식수의 3.8%를 기본 여유 조리량으로 적용</span></div>
+              </div>
+            </article>
+
+            <article class="panel notification-settings-panel">
+              <div class="panel-head"><h2>알림 설정</h2><button type="button">테스트 발송 ›</button></div>
+              <div class="settings-toggle-list">
+                <div><b>피크 혼잡 알림</b><span>12:00 전후</span><em></em></div>
+                <div><b>정산 승인 대기</b><span>매월 1일</span><em></em></div>
+                <div><b>데이터 품질 이슈</b><span>실시간</span><em></em></div>
+              </div>
+            </article>
+
+            <article class="panel settings-audit-panel">
+              <div class="panel-head"><h2>최근 변경 이력</h2><button type="button">전체 보기 ›</button></div>
+              <div class="meal-log-list">
+                <div><b>07.09</b><span>점심 운영 종료 시간을 13:00으로 변경</span><em>김민지</em></div>
+                <div><b>07.01</b><span>수기 입력 권한을 매니저 이상으로 제한</span><em>김민지</em></div>
+                <div><b>06.28</b><span>B솔루션 계약 단가 변경 예약</span><em>우성욱</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+        <!-- ===== 회사관리자 (Workspace Admin) ===== -->
+        <section class="page-view" id="ws-dashboard-page">
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">오늘 예상 이용 <span>ⓘ</span></div>
+              <strong class="green">201<small>명</small></strong>
+              <p>재적 320명 대비 <b>62.8%</b></p>
+            </article>
+            <article class="kpi-card realtime">
+              <div>
+                <div class="card-title">실시간 이용 <span>ⓘ</span></div>
+                <strong>103<small>명</small></strong>
+                <p>예상 대비</p>
+                <b>51.2%</b>
+              </div>
+              <div class="donut" style="--p:51"><span>51%</span></div>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">지난달 (6월) 식수</div>
+              <strong>5,320<small>식</small></strong>
+              <p>전월 대비 <b>▲ 3.1%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">지난달 (6월) 청구액</div>
+              <strong class="green money">₩ 37,240,000</strong>
+              <p>정산 방식 <b>급여 차감</b></p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel">
+              <div class="panel-head">
+                <h2>오늘 자사 부재 현황</h2>
+                <button type="button">부재 일정 관리 ›</button>
+              </div>
+              <div class="absence-grid">
+                <div><span>휴가</span><b class="icon">🌴</b><strong>8<small>명</small></strong></div>
+                <div><span>재택근무</span><b class="icon">🏠</b><strong>22<small>명</small></strong></div>
+                <div><span>외근</span><b class="icon">🚶</b><strong>4<small>명</small></strong></div>
+                <div><span>출장</span><b class="icon">✈️</b><strong>2<small>명</small></strong></div>
+              </div>
+              <p class="notice">ⓘ 총 36명의 부재가 식당 식수예측에 반영되었습니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h2>급여 차감 요약</h2>
+                <button type="button">차감 내역 ›</button>
+              </div>
+              <div class="deduction-list">
+                <div><span>6월 차감 대상</span><b>5,320건</b><em>확정 대기</em></div>
+                <div><span>차감 예정액</span><b>₩ 37,240,000</b><em>7,000원/식</em></div>
+                <div><span>제외 처리</span><b>46건</b><em class="bad-text">확인 필요 2건</em></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head">
+                <h2>이번 주 자사 이용 추이</h2>
+                <button type="button">자세히 보기 ›</button>
+              </div>
+              <div class="week-bars">
+                <div style="--h:150"><b>192</b><span>월</span></div>
+                <div style="--h:155"><b>199</b><span>화</span></div>
+                <div style="--h:147"><b>188</b><span>수</span></div>
+                <div style="--h:151"><b>194</b><span>목</span></div>
+                <div style="--h:80"><b>103*</b><span>금</span></div>
+              </div>
+              <p class="notice">ⓘ 금요일은 재택근무 증가로 이용률이 평균보다 24% 낮습니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>식당 공지사항</h2><button type="button">더보기 ›</button></div>
+              <div class="quality-list">
+                <div><b>7월 13일 (월) 메뉴 안내</b><span>돈까스 & 수제소스 / 순두부찌개 2가지 메뉴로 운영됩니다.</span></div>
+                <div><b>배식 시간 변경</b><span>7월 20일부터 점심 운영이 13:00까지로 연장됩니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>우리 회사 VOC</h2><button type="button">전체 보기 ›</button></div>
+              <div class="menu-voc-list">
+                <div><b>🙂</b><span>오늘 불고기 덮밥 정말 맛있었어요!</span><em>홍길동 대리</em></div>
+                <div><b>😐</b><span>12시 10분쯤 줄이 조금 길었습니다.</span><em>김하린</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-employees-page">
+          <section class="page-toolbar">
+            <div class="date-range"><strong>A전자 직원 관리</strong></div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">엑셀 다운로드</button>
+              <button class="green-button" type="button">HR 동기화 실행</button>
             </div>
-            <div class="settings-grid">
-              <article>
-                <h3>계정 정보</h3>
-                <p>이름: 김지현</p>
-                <p>권한: 식당 관리자</p>
-                <p>이메일: kimjh@taspa.co.kr</p>
-              </article>
-              <article>
-                <h3>식당 정보</h3>
-                <p>위치: 판교 본사 구내식당</p>
-                <p>운영 시간: 09:00 - 14:00</p>
-                <p>최대 수용: 820명</p>
-              </article>
-              <article>
-                <h3>알림 설정</h3>
-                <ul>
-                  <li>잔반 10kg 초과 시 알림</li>
-                  <li>예약 80% 이상 시 경고</li>
-                  <li>정산 마감 2일 전 알림</li>
-                </ul>
-              </article>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">등록 직원 <span>ⓘ</span></div>
+              <strong class="green">320<small>명</small></strong>
+              <p>식사 이용 가능 <b>318명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">이번 달 신규</div>
+              <strong>7<small>명</small></strong>
+              <p>퇴사 처리 <b>2명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">미매핑 계정</div>
+              <strong class="green">3<small>건</small></strong>
+              <p>사번 매핑 <b>확인 필요</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">마지막 HR 동기화</div>
+              <strong class="text">오늘 06:00</strong>
+              <p>다음 동기화 <b>내일 06:00</b></p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>직원 목록</h2>
+                  <p>HR 시스템과 매일 06:00 자동 동기화됩니다.</p>
+                </div>
+                <button type="button">직원 추가 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>이름</th><th>부서</th><th>사번</th><th>인증 수단</th><th>이번 달 식수</th><th>상태</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>김하린</td><td>개발1팀</td><td>A-190312</td><td>QR + 사원증</td><td>7식</td><td><span class="mini-pill good">활성</span></td></tr>
+                  <tr><td>정민아</td><td>디자인팀</td><td>A-201108</td><td>QR</td><td>6식</td><td><span class="mini-pill good">활성</span></td></tr>
+                  <tr><td>김지란</td><td>기획팀</td><td>A-231204</td><td>QR + 사원증</td><td>6식</td><td><span class="mini-pill good">활성</span></td></tr>
+                  <tr><td>박준호</td><td>영업팀</td><td>A-180907</td><td>사원증</td><td>5식</td><td><span class="mini-pill good">활성</span></td></tr>
+                  <tr><td>신유진</td><td>인사팀</td><td>미매핑</td><td>-</td><td>0식</td><td><span class="mini-pill warn">매핑 필요</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>계정 이슈</h2><button type="button">해결하기 ›</button></div>
+              <div class="quality-list">
+                <div><b>미매핑 계정 3건</b><span>HR 명단에 있으나 TASPA 계정과 연결되지 않았습니다.</span></div>
+                <div><b>퇴사자 계정 1건</b><span>6월 30일 퇴사 처리된 계정의 이용 권한 회수가 필요합니다.</span></div>
+                <div><b>중복 사번 1건</b><span>같은 사번으로 두 계정이 등록되어 있습니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>초대 상태</h2><button type="button">초대 재발송 ›</button></div>
+              <div class="contract-list">
+                <div><b>신규 입사자 5명</b><span>초대 메일 발송 완료 · 가입 대기</span><em>07.08</em></div>
+                <div><b>기존 미가입 9명</b><span>2회 이상 초대 미응답</span><em>06월~</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-absence-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026.07.10 (금)</strong>
+              <button type="button">›</button>
             </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">엑셀 업로드</button>
+              <button class="green-button" type="button">부재 일정 등록</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">오늘 자사 부재 <span>ⓘ</span></div>
+              <strong class="green">36<small>명</small></strong>
+              <p>식수예측 <b>-32식</b> 반영</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">휴가</div>
+              <strong>8<small>명</small></strong>
+              <p>연차 6 · 반차 2</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">재택근무</div>
+              <strong>22<small>명</small></strong>
+              <p>전일 대비 <b>▲ 9명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">외근 / 출장</div>
+              <strong>6<small>명</small></strong>
+              <p>외근 4 · 출장 2</p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>부재 일정 등록 현황</h2>
+                  <p>등록된 일정은 식당 식수예측에 자동 반영됩니다.</p>
+                </div>
+                <button type="button">필터 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>직원</th><th>부서</th><th>유형</th><th>기간</th><th>예측 반영</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>김하린</td><td>개발1팀</td><td>재택근무</td><td>07.10</td><td><span class="mini-pill good">반영됨</span></td></tr>
+                  <tr><td>정민아</td><td>디자인팀</td><td>연차</td><td>07.10</td><td><span class="mini-pill good">반영됨</span></td></tr>
+                  <tr><td>박준호</td><td>영업팀</td><td>외근 (오전)</td><td>07.10</td><td><span class="mini-pill good">반영됨</span></td></tr>
+                  <tr><td>최성우</td><td>개발2팀</td><td>출장</td><td>07.10 - 07.13</td><td><span class="mini-pill good">반영됨</span></td></tr>
+                  <tr><td>한지원</td><td>기획팀</td><td>출장</td><td>07.10 - ?</td><td><span class="mini-pill warn">종료일 필요</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>주간 부재 추이</h2><button type="button">월간 보기 ›</button></div>
+              <div class="week-bars">
+                <div style="--h:76"><b>21</b><span>월</span></div>
+                <div style="--h:86"><b>24</b><span>화</span></div>
+                <div style="--h:94"><b>26</b><span>수</span></div>
+                <div style="--h:83"><b>23</b><span>목</span></div>
+                <div style="--h:130"><b>36</b><span>금</span></div>
+              </div>
+              <p class="notice">ⓘ 금요일 재택 증가로 부재가 가장 많습니다.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>최근 등록 내역</h2><button type="button">전체 보기 ›</button></div>
+              <div class="absence-records">
+                <div><b>김하린</b><span>재택근무 · 본인 등록</span><em>07.09 17:42</em></div>
+                <div><b>정민아</b><span>연차 · HR 동기화</span><em>07.10 06:00</em></div>
+                <div><b>최성우</b><span>출장 · 관리자 등록</span><em>07.08 15:20</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-meals-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026.07.10 (금) 점심</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">CSV 내보내기</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card realtime">
+              <div>
+                <div class="card-title">실시간 이용 <span>ⓘ</span></div>
+                <strong class="green">103<small>명</small></strong>
+                <p>예상 201명 대비</p>
+                <b>51.2%</b>
+              </div>
+              <div class="donut" style="--p:51"><span>51%</span></div>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">이번 주 일평균</div>
+              <strong>193<small>명</small></strong>
+              <p>재적 대비 이용률 <b>60.3%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">7월 누적</div>
+              <strong>1,520<small>식</small></strong>
+              <p>전월 동기 대비 <b>▲ 4.2%</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">확인 필요</div>
+              <strong class="green">2<small>건</small></strong>
+              <p>중복 인증 의심 기록</p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <h2>일자별 이용 현황</h2>
+                <button type="button">기간 변경 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>날짜</th><th>예상</th><th>실제</th><th>이용률</th><th>부재 반영</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>07.10 (금)</td><td>201명</td><td>진행 중</td><td>51.2%</td><td>36명</td></tr>
+                  <tr><td>07.09 (목)</td><td>216명</td><td>194명</td><td>89.8%</td><td>23명</td></tr>
+                  <tr><td>07.08 (수)</td><td>171명</td><td>188명</td><td>109.9%</td><td>26명</td></tr>
+                  <tr><td>07.07 (화)</td><td>221명</td><td>199명</td><td>90.0%</td><td>24명</td></tr>
+                  <tr><td>07.06 (월)</td><td>209명</td><td>192명</td><td>91.9%</td><td>21명</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>최근 체크인</h2><button type="button">라이브 보기 ›</button></div>
+              <div class="meal-log-list">
+                <div><b>12:10:42</b><span>김하린 · 개발1팀</span><em>QR</em></div>
+                <div><b>12:10:11</b><span>정민아 · 디자인팀</span><em>QR</em></div>
+                <div><b>12:09:56</b><span>김지란 · 기획팀</span><em>사원증</em></div>
+                <div><b>12:09:38</b><span>박준호 · 영업팀</span><em>사원증</em></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>확인 필요 기록</h2><button type="button">처리하기 ›</button></div>
+              <div class="quality-list">
+                <div><b>중복 인증 의심 2건</b><span>같은 사원증으로 3분 내 재인증된 기록이 있습니다.</span></div>
+                <div><b>방문자 동반 1건</b><span>수기 입력된 방문자 식수의 부담 주체 확인이 필요합니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-settlement-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026년 6월 정산</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">이의 신청</button>
+              <button class="green-button" type="button">정산서 다운로드</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">이번 달 청구 예정 <span>ⓘ</span></div>
+              <strong class="green money">₩ 37,240,000</strong>
+              <p>확정 식수 <b>5,320식</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">계약 단가</div>
+              <strong>7,000<small>원</small></strong>
+              <p>계약 기간 <b>2026.01 - 12</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">정산 방식</div>
+              <strong class="text">급여 차감</strong>
+              <p>차감 대상 <b>5,320건</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">정산 상태</div>
+              <strong class="green text">확정 완료</strong>
+              <p>확정일 <b>2026.07.04</b></p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>월별 정산 내역</h2>
+                  <p>식당관리자가 확정한 Meal Log를 기준으로 집계됩니다.</p>
+                </div>
+                <button type="button">CSV 내보내기 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>정산 월</th><th>식수</th><th>단가</th><th>청구액</th><th>상태</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>2026.06</td><td>5,320식</td><td>7,000원</td><td>37,240,000원</td><td><span class="mini-pill good">확정</span></td></tr>
+                  <tr><td>2026.05</td><td>5,160식</td><td>7,000원</td><td>36,120,000원</td><td><span class="mini-pill good">완료</span></td></tr>
+                  <tr><td>2026.04</td><td>4,979식</td><td>7,000원</td><td>34,853,000원</td><td><span class="mini-pill good">완료</span></td></tr>
+                  <tr><td>2026.03</td><td>5,061식</td><td>7,000원</td><td>35,427,000원</td><td><span class="mini-pill good">완료</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>계약 정보</h2><button type="button">계약서 보기 ›</button></div>
+              <div class="contract-list">
+                <div><b>판교 본사 구내식당</b><span>점심 11:30 - 13:00 · 7,000원/식</span><em>2026.01.01 - 12.31</em></div>
+                <div><b>정산 기준</b><span>매월 말일 Meal Log 확정 후 익월 5일 청구</span><em>급여 차감</em></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>확인 필요 항목</h2><button type="button">문의하기 ›</button></div>
+              <div class="quality-list">
+                <div><b>방문자 식수 4건</b><span>자사 부담 여부 확인 후 6월 정산에 반영됩니다.</span></div>
+                <div><b>8월 단가 안내</b><span>물가 조정에 따라 8월부터 단가 협의가 예정되어 있습니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-deduction-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026년 6월 급여 차감</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">차감 파일 다운로드</button>
+              <button class="green-button" type="button">급여 시스템 전송</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">차감 대상 <span>ⓘ</span></div>
+              <strong class="green">5,320<small>건</small></strong>
+              <p>대상 직원 <b>308명</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">총 차감 예정액</div>
+              <strong class="green money">₩ 37,240,000</strong>
+              <p>1인 평균 <b>₩ 120,900</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">제외 처리</div>
+              <strong>46<small>건</small></strong>
+              <p>회사 부담 · 행사 식사</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">파일 상태</div>
+              <strong class="green text">생성 가능</strong>
+              <p>급여 마감 <b>07.25</b>까지</p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>직원별 차감 내역</h2>
+                  <p>급여 마감 전까지 예외 처리를 완료해 주세요.</p>
+                </div>
+                <button type="button">전체 보기 ›</button>
+              </div>
+              <table>
+                <thead>
+                  <tr><th>이름</th><th>사번</th><th>식수</th><th>차감액</th><th>상태</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>김하린</td><td>A-190312</td><td>16식</td><td>112,000원</td><td><span class="mini-pill good">정상</span></td></tr>
+                  <tr><td>정민아</td><td>A-201108</td><td>14식</td><td>98,000원</td><td><span class="mini-pill good">정상</span></td></tr>
+                  <tr><td>김지란</td><td>A-231204</td><td>14식</td><td>98,000원</td><td><span class="mini-pill good">정상</span></td></tr>
+                  <tr><td>박준호</td><td>A-180907</td><td>11식</td><td>77,000원</td><td><span class="mini-pill good">정상</span></td></tr>
+                  <tr><td>최성우</td><td>A-170519</td><td>13식</td><td>91,000원</td><td><span class="mini-pill warn">이의 신청</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>예외 처리 내역</h2><button type="button">규칙 설정 ›</button></div>
+              <div class="quality-list">
+                <div><b>회사 행사 식사 38건</b><span>6월 9일 워크숍 점심은 회사 부담으로 제외되었습니다.</span></div>
+                <div><b>손님 접대 8건</b><span>영업팀 방문자 동반 식사는 부서 경비로 처리되었습니다.</span></div>
+                <div><b>이의 신청 1건</b><span>최성우 님의 6월 2일 중복 기록 검토가 진행 중입니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>처리 이력</h2><button type="button">전체 보기 ›</button></div>
+              <div class="meal-log-list">
+                <div><b>07.04</b><span>6월 정산 확정 · 차감 파일 생성 가능</span><em>시스템</em></div>
+                <div><b>06.12</b><span>워크숍 식사 38건 일괄 제외 처리</span><em>우성욱</em></div>
+                <div><b>07.05</b><span>5월 차감 파일 급여 시스템 전송 완료</span><em>우성욱</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-report-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026년 6월 회사 리포트</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">PDF 미리보기</button>
+              <button class="green-button" type="button">리포트 다운로드</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card"><div class="card-title">월 누적 식수</div><strong>5,320<small>식</small></strong><p>전월 대비 <b>▲ 3.1%</b></p></article>
+            <article class="kpi-card"><div class="card-title">1인 평균</div><strong>3.9<small>식/주</small></strong><p>재적 대비 이용률 <b>79%</b></p></article>
+            <article class="kpi-card"><div class="card-title">부재 반영 정확도</div><strong class="green">96.8<small>%</small></strong><p>미등록 부재 <b>18건</b></p></article>
+            <article class="kpi-card"><div class="card-title">자사 만족도</div><strong>4.5<small>/5</small></strong><p>참여 <b>214명</b></p></article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head"><h2>주간 이용 요약</h2><button type="button">데이터 보기 ›</button></div>
+              <table>
+                <thead><tr><th>주차</th><th>이용 식수</th><th>이용률</th><th>부재</th><th>차감액</th></tr></thead>
+                <tbody>
+                  <tr><td>1주차</td><td>1,264식</td><td>75.2%</td><td>128명</td><td>8,848,000원</td></tr>
+                  <tr><td>2주차</td><td>1,318식</td><td>78.5%</td><td>112명</td><td>9,226,000원</td></tr>
+                  <tr><td>3주차</td><td>1,342식</td><td>79.9%</td><td>104명</td><td>9,394,000원</td></tr>
+                  <tr><td>4주차</td><td>1,396식</td><td>83.1%</td><td>96명</td><td>9,772,000원</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>이번 달 인사이트</h2><button type="button">공유 ›</button></div>
+              <div class="quality-list">
+                <div><b>이용률 상승</b><span>주차가 지날수록 이용률이 꾸준히 상승해 83%대에 도달했습니다.</span></div>
+                <div><b>금요일 패턴</b><span>재택 증가로 금요일 이용률이 다른 요일보다 24% 낮습니다.</span></div>
+                <div><b>부재 등록 개선</b><span>미등록 부재가 전월 31건에서 18건으로 감소했습니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>자동 리포트 발송</h2><button type="button">예약 설정 ›</button></div>
+              <div class="contract-list">
+                <div><b>월간 이용 리포트</b><span>매월 1일 10:00 · 회사관리자</span><em>활성</em></div>
+                <div><b>급여 차감 요약</b><span>매월 18일 09:00 · 인사팀</span><em>활성</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="ws-settings-page">
+          <section class="page-toolbar">
+            <div class="date-range"><strong>A전자 회사 설정</strong></div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">변경 이력</button>
+              <button class="green-button" type="button">설정 저장</button>
+            </div>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>회사 기본 정보</h2>
+                  <p>정산과 직원 동기화에 사용되는 핵심 설정입니다.</p>
+                </div>
+                <button type="button">수정 ›</button>
+              </div>
+              <div class="settings-form-grid">
+                <label><span>회사명</span><input value="A전자" /></label>
+                <label><span>이용 식당</span><input value="판교 본사 구내식당" /></label>
+                <label><span>정산 방식</span><input value="급여 차감 (매월 25일 반영)" /></label>
+                <label><span>HR 동기화</span><input value="매일 06:00 자동 동기화" /></label>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>알림 설정</h2><button type="button">테스트 발송 ›</button></div>
+              <div class="settings-toggle-list">
+                <div><b>정산 확정 알림</b><span>매월 확정 시</span><em></em></div>
+                <div><b>차감 파일 마감 알림</b><span>급여 마감 3일 전</span><em></em></div>
+                <div><b>부재 미등록 리마인드</b><span>매주 목요일</span><em></em></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>관리자 권한</h2><button type="button">권한 편집 ›</button></div>
+              <div class="contract-list">
+                <div><b>우성욱</b><span>회사관리자 · 전체 권한</span><em>활성</em></div>
+                <div><b>김인사</b><span>인사팀 · 차감 내역 조회</span><em>활성</em></div>
+                <div><b>이재무</b><span>재무팀 · 정산 조회</span><em>초대 대기</em></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head"><h2>최근 변경 이력</h2><button type="button">전체 보기 ›</button></div>
+              <div class="meal-log-list">
+                <div><b>06.20</b><span>급여 차감 반영일을 25일로 변경</span><em>우성욱</em></div>
+                <div><b>06.10</b><span>이재무 님을 정산 조회 권한으로 초대</span><em>우성욱</em></div>
+                <div><b>06.02</b><span>HR 동기화 시간을 06:00으로 변경</span><em>김인사</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <!-- ===== 사용자 (Employee) ===== -->
+        <section class="page-view" id="emp-home-page">
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">오늘 점심 투표</div>
+              <strong class="green text">메뉴 A 완료</strong>
+              <p>돈까스 & 수제소스</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">이번 달 식사</div>
+              <strong>6<small>회</small></strong>
+              <p>주 평균 <b>3.0회</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">급여 차감 예정</div>
+              <strong class="green money">₩ 42,000</strong>
+              <p>6식 × 7,000원</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">현재 식당 혼잡도</div>
+              <strong class="text">보통</strong>
+              <p>예상 대기 <b>약 4분</b></p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <h2>오늘의 메뉴</h2>
+                <button type="button">주간 메뉴 보기 ›</button>
+              </div>
+              <div class="menu-choice-grid">
+                <section class="menu-choice-card selected">
+                  <div class="food-art cutlet" aria-label="돈까스 메뉴 이미지"></div>
+                  <div>
+                    <span>메뉴 A · 내가 투표한 메뉴</span>
+                    <h3>돈까스 & 수제소스</h3>
+                    <p>밥, 미소장국, 양배추샐러드, 단무지</p>
+                  </div>
+                </section>
+                <section class="menu-choice-card">
+                  <div class="food-art rice" aria-label="불고기 덮밥 메뉴 이미지"></div>
+                  <div>
+                    <span>메뉴 B</span>
+                    <h3>불고기 덮밥</h3>
+                    <p>계란국, 김치, 오이무침, 과일</p>
+                  </div>
+                </section>
+              </div>
+              <p class="notice">ⓘ 12:00 - 12:25는 혼잡 구간입니다. 12:30 이후 방문을 추천해요.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>빠른 체크인</h2><button type="button">전체 화면 ›</button></div>
+              <div class="quick-qr">
+                <div class="qr-frame small">
+                  <svg viewBox="0 0 25 25" aria-label="식사 인증 QR 코드">
+                    <g class="qr-modules">
+                      <rect x="0" y="0" width="7" height="7" /><rect x="1" y="1" width="5" height="5" fill="#fff" /><rect x="2" y="2" width="3" height="3" />
+                      <rect x="18" y="0" width="7" height="7" /><rect x="19" y="1" width="5" height="5" fill="#fff" /><rect x="20" y="2" width="3" height="3" />
+                      <rect x="0" y="18" width="7" height="7" /><rect x="1" y="19" width="5" height="5" fill="#fff" /><rect x="2" y="20" width="3" height="3" />
+                      <path d="M9 0h1v2h-1zM11 1h2v1h-2zM14 0h1v1h-1zM16 2h1v2h-1zM9 3h2v1h-2zM13 3h1v2h-1zM15 4h2v1h-2zM10 5h1v2h-1zM12 6h3v1h-3zM0 9h2v1h-2zM3 10h1v1h-1zM5 9h2v1h-2zM8 9h1v3h-1zM10 10h2v1h-2zM13 9h1v1h-1zM15 10h1v2h-1zM17 9h2v1h-2zM20 10h2v1h-2zM23 9h2v1h-2zM1 12h1v2h-1zM4 12h2v1h-2zM7 13h1v1h-1zM10 12h1v2h-1zM12 13h2v1h-2zM16 12h1v1h-1zM18 13h2v1h-2zM21 12h1v2h-1zM23 13h2v1h-2zM0 15h1v2h-1zM3 15h1v1h-1zM5 16h2v1h-2zM9 15h2v1h-2zM12 15h1v2h-1zM14 16h2v1h-2zM17 15h1v1h-1zM19 16h1v2h-1zM22 15h2v1h-2zM9 18h1v2h-1zM11 19h2v1h-2zM14 18h1v1h-1zM16 19h1v2h-1zM18 18h2v1h-2zM21 19h1v1h-1zM23 18h2v2h-2zM9 21h2v1h-2zM12 22h1v2h-1zM14 21h2v1h-2zM17 22h2v1h-2zM20 21h1v2h-1zM22 23h2v1h-2z" />
+                    </g>
+                  </svg>
+                </div>
+                <button class="green-button" type="button">QR 새로고침</button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>공지사항</h2><button type="button">더보기 ›</button></div>
+              <div class="quality-list">
+                <div><b>7월 13일 (월) 메뉴 안내</b><span>돈까스 & 수제소스 / 순두부찌개 2가지 메뉴로 운영됩니다.</span></div>
+                <div><b>배식 시간 연장</b><span>7월 20일부터 13:00까지 운영됩니다.</span></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head"><h2>최근 식사 기록</h2><button type="button">전체 기록 ›</button></div>
+              <div class="meal-log-list">
+                <div><b>07.09</b><span>메뉴 B · 불고기 덮밥</span><em>QR</em></div>
+                <div><b>07.08</b><span>메뉴 A · 생선까스</span><em>QR</em></div>
+                <div><b>07.07</b><span>메뉴 A · 제육볶음</span><em>사원증</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="emp-checkin-page">
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">오늘 체크인</div>
+              <strong class="text">아직 전</strong>
+              <p>점심 운영 <b>11:30 - 13:00</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">현재 혼잡도</div>
+              <strong class="text">보통</strong>
+              <p>예상 대기 <b>약 4분</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">오늘 내 메뉴</div>
+              <strong class="green text">메뉴 A</strong>
+              <p>돈까스 & 수제소스</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">이번 주 식사</div>
+              <strong>3<small>회</small></strong>
+              <p>화 · 수 · 목 이용</p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>식사 인증 QR</h2>
+                  <p>배식대 리더기에 스캔하면 자동으로 식사 기록이 생성됩니다.</p>
+                </div>
+                <button type="button">밝기 최대 ›</button>
+              </div>
+              <div class="qr-layout">
+                <div class="qr-frame">
+                  <svg viewBox="0 0 25 25" aria-label="식사 인증 QR 코드">
+                    <g class="qr-modules">
+                      <rect x="0" y="0" width="7" height="7" /><rect x="1" y="1" width="5" height="5" fill="#fff" /><rect x="2" y="2" width="3" height="3" />
+                      <rect x="18" y="0" width="7" height="7" /><rect x="19" y="1" width="5" height="5" fill="#fff" /><rect x="20" y="2" width="3" height="3" />
+                      <rect x="0" y="18" width="7" height="7" /><rect x="1" y="19" width="5" height="5" fill="#fff" /><rect x="2" y="20" width="3" height="3" />
+                      <path d="M9 0h1v2h-1zM11 1h2v1h-2zM14 0h1v1h-1zM16 2h1v2h-1zM9 3h2v1h-2zM13 3h1v2h-1zM15 4h2v1h-2zM10 5h1v2h-1zM12 6h3v1h-3zM0 9h2v1h-2zM3 10h1v1h-1zM5 9h2v1h-2zM8 9h1v3h-1zM10 10h2v1h-2zM13 9h1v1h-1zM15 10h1v2h-1zM17 9h2v1h-2zM20 10h2v1h-2zM23 9h2v1h-2zM1 12h1v2h-1zM4 12h2v1h-2zM7 13h1v1h-1zM10 12h1v2h-1zM12 13h2v1h-2zM16 12h1v1h-1zM18 13h2v1h-2zM21 12h1v2h-1zM23 13h2v1h-2zM0 15h1v2h-1zM3 15h1v1h-1zM5 16h2v1h-2zM9 15h2v1h-2zM12 15h1v2h-1zM14 16h2v1h-2zM17 15h1v1h-1zM19 16h1v2h-1zM22 15h2v1h-2zM9 18h1v2h-1zM11 19h2v1h-2zM14 18h1v1h-1zM16 19h1v2h-1zM18 18h2v1h-2zM21 19h1v1h-1zM23 18h2v2h-2zM9 21h2v1h-2zM12 22h1v2h-1zM14 21h2v1h-2zM17 22h2v1h-2zM20 21h1v2h-1zM22 23h2v1h-2z" />
+                    </g>
+                  </svg>
+                </div>
+                <div class="qr-side">
+                  <strong>김지란 · A전자 기획팀</strong>
+                  <p>QR 유효 시간 <b class="green">00:27</b> · 만료되면 자동으로 갱신됩니다.</p>
+                  <div class="absence-actions">
+                    <button class="green-button" type="button">QR 새로고침</button>
+                    <button class="ghost-button" type="button">사원증으로 인증</button>
+                  </div>
+                  <p class="notice">ⓘ 화면이 어두우면 인식이 어려울 수 있어요. 밝기를 높여 주세요.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>이용 안내</h2><button type="button">전체 안내 ›</button></div>
+              <div class="quality-list">
+                <div><b>1일 1회 인증</b><span>점심 시간 내 1회만 인증할 수 있으며 중복 인증은 자동 감지됩니다.</span></div>
+                <div><b>방문자 동반</b><span>방문자와 함께 식사할 경우 배식대 직원에게 문의해 주세요.</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>최근 체크인</h2><button type="button">전체 기록 ›</button></div>
+              <div class="meal-log-list">
+                <div><b>07.09</b><span>12:08 체크인 · 불고기 덮밥</span><em>QR</em></div>
+                <div><b>07.08</b><span>12:22 체크인 · 생선까스</span><em>QR</em></div>
+                <div><b>07.07</b><span>11:52 체크인 · 제육볶음</span><em>사원증</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="emp-menu-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026.07.10 (금) 점심</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">주간 메뉴 보기</button>
+            </div>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>오늘 메뉴 투표</h2>
+                  <p>투표는 식당의 준비량 예측에 반영되어 음식물 폐기를 줄입니다. 현재 312명 참여!</p>
+                </div>
+                <strong>투표 마감 10:30</strong>
+              </div>
+              <div class="vote-grid">
+                <div class="vote-card selected">
+                  <div class="food-art cutlet" aria-label="돈까스 메뉴 이미지"></div>
+                  <h3>메뉴 A · 돈까스 & 수제소스</h3>
+                  <p>밥, 미소장국, 양배추샐러드, 단무지 · 812 kcal</p>
+                  <div class="vote-share"><b>55%</b><span>172명 선택</span></div>
+                  <div class="progress"><span style="width:55%"></span></div>
+                  <button class="green-button vote-button" type="button">투표 완료 ✓</button>
+                </div>
+                <div class="vote-card">
+                  <div class="food-art rice" aria-label="불고기 덮밥 메뉴 이미지"></div>
+                  <h3>메뉴 B · 불고기 덮밥</h3>
+                  <p>계란국, 김치, 오이무침, 과일 · 746 kcal</p>
+                  <div class="vote-share"><b>45%</b><span>140명 선택</span></div>
+                  <div class="progress"><span style="width:45%"></span></div>
+                  <button class="green-button vote-button" type="button">이 메뉴로 투표</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head"><h2>이번 주 메뉴</h2><button type="button">다음 주 보기 ›</button></div>
+              <table>
+                <thead><tr><th>요일</th><th>메뉴 A</th><th>메뉴 B</th><th>비고</th></tr></thead>
+                <tbody>
+                  <tr><td>월 (07.06)</td><td>치킨 카라아게</td><td>냉모밀</td><td>완료</td></tr>
+                  <tr><td>화 (07.07)</td><td>제육볶음</td><td>비빔밥</td><td>완료</td></tr>
+                  <tr><td>수 (07.08)</td><td>생선까스</td><td>유부우동</td><td>완료</td></tr>
+                  <tr><td>목 (07.09)</td><td>카레라이스</td><td>불고기 덮밥</td><td>완료</td></tr>
+                  <tr><td>금 (07.10)</td><td>돈까스 & 수제소스</td><td>불고기 덮밥</td><td><span class="mini-pill good">오늘</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>알레르기 · 영양 정보</h2><button type="button">상세 보기 ›</button></div>
+              <div class="quality-list">
+                <div><b>메뉴 A</b><span>밀, 대두, 돼지고기 함유 · 812 kcal · 단백질 34g</span></div>
+                <div><b>메뉴 B</b><span>대두, 쇠고기, 계란 함유 · 746 kcal · 단백질 29g</span></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>지난 메뉴 만족도</h2><button type="button">내 평가 ›</button></div>
+              <div class="contract-list">
+                <div><b>불고기 덮밥</b><span>어제 · 평균 4.8점</span><em>내 평가 5점</em></div>
+                <div><b>생선까스</b><span>07.08 · 평균 4.4점</span><em>내 평가 4점</em></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="emp-history-page">
+          <section class="page-toolbar">
+            <div class="date-range">
+              <button type="button">‹</button>
+              <strong>2026년 7월</strong>
+              <button type="button">›</button>
+            </div>
+            <div class="absence-actions">
+              <button class="ghost-button" type="button">내역 다운로드</button>
+            </div>
+          </section>
+
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">이번 달 식사 <span>ⓘ</span></div>
+              <strong class="green">6<small>회</small></strong>
+              <p>지난달 같은 기간 <b>▲ 1회</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">급여 차감 예정</div>
+              <strong class="green money">₩ 42,000</strong>
+              <p>6식 × 7,000원</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">주 평균</div>
+              <strong>3.0<small>회</small></strong>
+              <p>회사 평균 <b>2.8회</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">최다 선택</div>
+              <strong class="text">메뉴 A</strong>
+              <p>돈까스 계열 <b>3회</b></p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <h2>최근 식사 내역</h2>
+                <button type="button">전체 보기 ›</button>
+              </div>
+              <table>
+                <thead><tr><th>날짜</th><th>메뉴</th><th>인증</th><th>시간</th><th>금액</th></tr></thead>
+                <tbody>
+                  <tr><td>07.09 (목)</td><td>메뉴 B · 불고기 덮밥</td><td>QR</td><td>12:08</td><td>7,000원</td></tr>
+                  <tr><td>07.08 (수)</td><td>메뉴 A · 생선까스</td><td>QR</td><td>12:22</td><td>7,000원</td></tr>
+                  <tr><td>07.07 (화)</td><td>메뉴 A · 제육볶음</td><td>사원증</td><td>11:52</td><td>7,000원</td></tr>
+                  <tr><td>07.06 (월)</td><td>메뉴 A · 치킨 카라아게</td><td>QR</td><td>12:15</td><td>7,000원</td></tr>
+                  <tr><td>07.03 (금)</td><td>메뉴 B · 열무국수</td><td>QR</td><td>12:31</td><td>7,000원</td></tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>요일별 이용 패턴</h2><button type="button">월별 보기 ›</button></div>
+              <div class="week-bars">
+                <div style="--h:100"><b>2</b><span>월</span></div>
+                <div style="--h:100"><b>2</b><span>화</span></div>
+                <div style="--h:50"><b>1</b><span>수</span></div>
+                <div style="--h:50"><b>1</b><span>목</span></div>
+                <div style="--h:6"><b>0</b><span>금</span></div>
+              </div>
+              <p class="notice">ⓘ 금요일은 재택근무로 이용이 적어요.</p>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>차감 안내</h2><button type="button">문의하기 ›</button></div>
+              <div class="quality-list">
+                <div><b>7월 급여 반영</b><span>7월 식사 금액은 7월 25일 급여에서 차감됩니다.</span></div>
+                <div><b>이의 신청</b><span>잘못된 기록은 식사 후 7일 이내에 신청할 수 있습니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="emp-rating-page">
+          <section class="kpi-grid-4">
+            <article class="kpi-card">
+              <div class="card-title">내 평균 별점</div>
+              <strong class="green">4.8<small>/5</small></strong>
+              <p>이번 달 <b>6회</b> 참여</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">오늘 평가</div>
+              <strong class="text">아직 전</strong>
+              <p>식사 후 평가할 수 있어요</p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">식당 전체 평균</div>
+              <strong>4.6<small>/5</small></strong>
+              <p>최근 7일 대비 <b>▲ 0.2</b></p>
+            </article>
+            <article class="kpi-card">
+              <div class="card-title">내 의견 반영</div>
+              <strong class="green">2<small>건</small></strong>
+              <p>메뉴 구성에 반영됨</p>
+            </article>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>오늘 식사 평가</h2>
+                  <p>2026.07.10 (금) 점심 · 메뉴 A · 돈까스 & 수제소스</p>
+                </div>
+              </div>
+              <div class="star-row" role="group" aria-label="별점 선택">
+                <button class="on" type="button" aria-label="1점">★</button>
+                <button class="on" type="button" aria-label="2점">★</button>
+                <button class="on" type="button" aria-label="3점">★</button>
+                <button class="on" type="button" aria-label="4점">★</button>
+                <button type="button" aria-label="5점">★</button>
+              </div>
+              <div class="voc-form">
+                <textarea placeholder="한줄평을 남겨 주세요 (선택)"></textarea>
+                <div class="form-actions">
+                  <button class="green-button" type="button">평가 제출</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>내 최근 평가</h2><button type="button">전체 보기 ›</button></div>
+              <div class="menu-voc-list">
+                <div><b>🙂</b><span>불고기 덮밥 · ★5 · "소스가 딱 좋았어요"</span><em>07.09</em></div>
+                <div><b>🙂</b><span>생선까스 · ★4 · "바삭했어요"</span><em>07.08</em></div>
+                <div><b>😐</b><span>제육볶음 · ★3 · "조금 매웠어요"</span><em>07.07</em></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>평가 안내</h2></div>
+              <div class="quality-list">
+                <div><b>익명 처리</b><span>별점과 한줄평은 식당에 익명으로 전달됩니다.</span></div>
+                <div><b>메뉴 반영</b><span>평가 데이터는 다음 메뉴 구성과 준비량 예측에 사용됩니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="emp-voc-page">
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>VOC 작성</h2>
+                  <p>남겨주신 의견은 식당관리자에게 전달되며 답변 상태를 확인할 수 있습니다.</p>
+                </div>
+              </div>
+              <div class="voc-form">
+                <div class="segment">
+                  <button class="active" type="button">메뉴</button>
+                  <button type="button">위생</button>
+                  <button type="button">운영</button>
+                  <button type="button">기타</button>
+                </div>
+                <textarea placeholder="의견을 자유롭게 남겨 주세요. 예) 국물 메뉴가 더 자주 나오면 좋겠어요."></textarea>
+                <div class="form-actions">
+                  <label class="voc-anon"><input type="checkbox" checked /> 익명으로 제출</label>
+                  <button class="green-button" type="button">의견 제출</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head"><h2>내 VOC 내역</h2><button type="button">전체 보기 ›</button></div>
+              <div class="contract-list">
+                <div><b>샐러드 종류가 다양해지면 좋겠어요</b><span>메뉴 · 07.02 제출</span><em><span class="mini-pill good">반영 완료</span></em></div>
+                <div><b>수저 코너가 조금 좁아요</b><span>운영 · 06.26 제출</span><em><span class="mini-pill">답변 완료</span></em></div>
+                <div><b>덮밥 양 옵션이 있으면 좋겠어요</b><span>메뉴 · 07.10 제출</span><em><span class="mini-pill warn">검토 중</span></em></div>
+              </div>
+            </article>
+
+            <article class="panel span-2">
+              <div class="panel-head"><h2>처리 안내</h2></div>
+              <div class="quality-list">
+                <div><b>답변 기한</b><span>접수된 의견은 영업일 기준 3일 이내에 답변됩니다.</span></div>
+                <div><b>반영 사례</b><span>이번 달 접수된 의견 중 6건이 메뉴와 운영에 반영되었습니다.</span></div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="page-view" id="emp-settings-page">
+          <section class="page-toolbar">
+            <div class="date-range"><strong>내 설정</strong></div>
+            <div class="absence-actions">
+              <button class="green-button" type="button">설정 저장</button>
+            </div>
+          </section>
+
+          <section class="detail-grid">
+            <article class="panel span-2">
+              <div class="panel-head">
+                <div>
+                  <h2>프로필</h2>
+                  <p>회사 정보는 HR 동기화로 자동 관리됩니다.</p>
+                </div>
+              </div>
+              <div class="settings-form-grid">
+                <label><span>이름</span><input value="김지란" /></label>
+                <label><span>회사 / 부서</span><input value="A전자 · 기획팀" /></label>
+                <label><span>사번</span><input value="A-231204" /></label>
+                <label><span>이메일</span><input value="jiran.kim@a-elec.co.kr" /></label>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>알림 설정</h2></div>
+              <div class="settings-toggle-list">
+                <div><b>오늘 메뉴 알림</b><span>평일 10:00</span><em></em></div>
+                <div><b>혼잡도 알림</b><span>여유 시간 안내</span><em></em></div>
+                <div><b>VOC 답변 알림</b><span>답변 등록 시</span><em></em></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head"><h2>계정</h2><button type="button">관리 ›</button></div>
+              <div class="quality-list">
+                <div><b>사원증 연동</b><span>사원증 태깅 인증이 연결되어 있습니다.</span></div>
+                <div><b>비밀번호</b><span>마지막 변경 2026.05.02 · 90일마다 변경을 권장해요.</span></div>
+              </div>
+            </article>
           </section>
         </section>
       </main>
