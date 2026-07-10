@@ -1,0 +1,10 @@
+/* Site CSS entry — bundled to dist/site.css (Namo "Site CSS", all pages).
+   External @import (web fonts) MUST precede all other rules, so it comes first.
+   Namo serves published Site CSS with Google Fonts @import (its default did too). */
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Pen+Script&display=swap");
+/* Pretendard body font (not on Google Fonts) — official jsDelivr dynamic subset, registers font-family "Pretendard". */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css");
+@import "./tokens.css";
+@import "./reset.css";
+@import "./landing.css";
+@import "./contact-modal.css";

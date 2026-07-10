@@ -1,0 +1,6 @@
+{
+  "title": "설정",
+  "path": "/settings",
+  "inMenu": true,
+  "requiredAuthLevel": 2
+}

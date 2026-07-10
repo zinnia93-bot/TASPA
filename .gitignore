@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dev/build/
+*.log
+.DS_Store
+Thumbs.db
+
+# Secrets & local machine config — DO NOT COMMIT (contain live API tokens)
+.mcp.json
+.cursor/
+.claude/settings.local.json

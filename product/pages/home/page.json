@@ -1,0 +1,6 @@
+{
+  "title": "대시보드",
+  "path": "/",
+  "inMenu": true,
+  "requiredAuthLevel": 0
+}

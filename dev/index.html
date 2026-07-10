@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TASPA · 로컬 미리보기</title>
+
+    <!-- Namo "Site CSS" equivalent (bundled from homepage/styles/site.css) -->
+    <link rel="stylesheet" href="/dev/build/site-styles.css" />
+    <!-- Per-page CSS (Namo "Page CSS" equivalent) — href swapped on navigation -->
+    <link id="page-css" rel="stylesheet" href="" />
+
+    <style>
+      /* Dev-only chrome — NOT deployed. Keeps the harness itself out of the way. */
+      #dev-bar {
+        position: fixed; inset: 0 0 auto 0; z-index: 99999;
+        display: flex; align-items: center; gap: 8px;
+        padding: 6px 12px; font: 12px/1.4 system-ui, sans-serif;
+        background: #10231a; color: #cde7d8; border-bottom: 1px solid #1f4433;
+      }
+      #dev-bar strong { color: #7ee2a8; letter-spacing: .5px; }
+      #dev-bar select { font: inherit; padding: 2px 6px; border-radius: 6px; }
+      #dev-bar .spacer { flex: 1; }
+      #dev-bar a { color: #7ee2a8; text-decoration: none; }
+      body { margin: 0; }
+      #page-root { padding-top: 34px; } /* offset the dev bar */
+    </style>
+  </head>
+  <body>
+    <div id="dev-bar">
+      <strong>TASPA DEV</strong>
+      <label>page:
+        <select id="page-select"></select>
+      </label>
+      <span class="spacer"></span>
+      <span id="dev-status">ready</span>
+      <a href="/dev/" title="reload">↻</a>
+    </div>
+
+    <!-- Namo "Page HTML" (inner body content) is injected here -->
+    <div id="page-root"></div>
+
+    <!-- Dev-only mock of Namo's runtime API (NOT deployed). Lets the contact
+         modal's submit path run locally; the real runtime provides window.API. -->
+    <script>
+      window.API = window.API || {
+        Site_SendEmailToAdmin(subject, message, durationMS) {
+          console.log('[DEV API] Site_SendEmailToAdmin', { subject, message, durationMS });
+          return new Promise((res) => setTimeout(() => res({ message: 'ok (dev mock)' }), 700));
+        },
+      };
+    </script>
+
+    <!-- Namo "Site JS" equivalent (bundled Web Components) -->
+    <script src="/dev/build/site.js"></script>
+
+    <script>
+      // Keep this list in sync with homepage/pages/*/page.json (dev-only navigation).
+      const PAGES = [
+        { name: 'home', label: '랜딩 (/)' },
+      ];
+
+      const sel = document.getElementById('page-select');
+      const root = document.getElementById('page-root');
+      const pageCss = document.getElementById('page-css');
+      const status = document.getElementById('dev-status');
+
+      for (const p of PAGES) {
+        const opt = document.createElement('option');
+        opt.value = p.name;
+        opt.textContent = p.label;
+        sel.appendChild(opt);
+      }
+
+      async function loadPage(name) {
+        status.textContent = 'loading…';
+        pageCss.href = `/homepage/pages/${name}/${name}.css`;
+        try {
+          const res = await fetch(`/homepage/pages/${name}/${name}.html`, { cache: 'no-store' });
+          root.innerHTML = await res.text(); // custom elements upgrade automatically
+          location.hash = name;
+          status.textContent = name;
+        } catch (e) {
+          root.innerHTML = `<pre style="padding:24px;color:#b00">페이지 로드 실패: ${name}\n${e}</pre>`;
+          status.textContent = 'error';
+        }
+      }
+
+      sel.addEventListener('change', () => loadPage(sel.value));
+
+      const start = location.hash.slice(1);
+      if (start && PAGES.some((p) => p.name === start)) sel.value = start;
+      loadPage(sel.value);
+
+      // esbuild live-reload (fires on any homepage/ rebuild)
+      try { new EventSource('/esbuild').addEventListener('change', () => location.reload()); } catch {}
+    </script>
+  </body>
+</html>

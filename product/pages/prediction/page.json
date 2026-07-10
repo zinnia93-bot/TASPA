@@ -1,0 +1,6 @@
+{
+  "title": "식수 예측",
+  "path": "/prediction",
+  "inMenu": true,
+  "requiredAuthLevel": 1
+}

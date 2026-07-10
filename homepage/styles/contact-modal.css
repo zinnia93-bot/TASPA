@@ -1,0 +1,64 @@
+/* <taspa-contact-modal> — site-wide lead-capture modal.
+   Class names are prefixed .tc- to stay clear of the global landing styles. */
+
+.tc-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.tc-modal.is-open { display: flex; }
+
+.tc-modal__overlay { position: absolute; inset: 0; background: rgba(10, 32, 20, 0.5); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.22s ease; }
+.tc-modal.is-open .tc-modal__overlay { opacity: 1; }
+
+.tc-modal__card {
+  position: relative; width: 100%; max-width: 480px; max-height: calc(100vh - 40px); overflow-y: auto;
+  background: var(--color-surface); border-radius: 24px; box-shadow: var(--shadow-lg);
+  padding: 32px 30px; transform: translateY(14px) scale(0.98); opacity: 0;
+  transition: transform 0.24s ease, opacity 0.24s ease;
+}
+.tc-modal.is-open .tc-modal__card { transform: none; opacity: 1; }
+
+.tc-modal__close {
+  position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; display: grid; place-items: center;
+  border: 0; border-radius: 50%; background: transparent; color: var(--gray-500); cursor: pointer;
+  font-size: 22px; line-height: 1; transition: background 0.12s, color 0.12s;
+}
+.tc-modal__close:hover { background: var(--gray-100); color: var(--ink); }
+
+.tc-modal__title { margin: 0 40px 6px 0; font-size: 26px; font-weight: 800; letter-spacing: -0.01em; color: var(--color-text); }
+.tc-modal__sub { margin: 0 0 24px; color: var(--color-text-muted); line-height: 1.55; font-size: 15px; }
+
+.tc-field { margin-bottom: 18px; }
+.tc-field__label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 14.5px; color: var(--gray-700); }
+.tc-field__label .req { color: var(--danger); margin-left: 2px; }
+.tc-input, .tc-textarea {
+  width: 100%; font-family: inherit; font-size: 15px; color: var(--ink); background: #fff;
+  border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); padding: 13px 14px;
+  transition: border-color 0.14s, box-shadow 0.14s, background 0.14s;
+}
+.tc-input::placeholder, .tc-textarea::placeholder { color: #a7b1a8; }
+.tc-input:focus, .tc-textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(21, 146, 83, 0.13); }
+.tc-textarea { min-height: 110px; resize: vertical; line-height: 1.55; }
+.tc-field.has-error .tc-input, .tc-field.has-error .tc-textarea { border-color: var(--danger); background: var(--danger-soft); }
+.tc-field__err { display: none; margin: 7px 2px 0; color: var(--danger); font-size: 13px; font-weight: 600; }
+.tc-field.has-error .tc-field__err { display: block; }
+
+/* honeypot — visually hidden, kept out of tab order */
+.tc-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.tc-submit { width: 100%; margin-top: 8px; padding: 15px; }
+.tc-submit[disabled] { opacity: 0.65; cursor: progress; }
+.tc-form__error { margin: 12px 2px 0; text-align: center; color: var(--danger); font-size: 13.5px; font-weight: 600; }
+.tc-form__foot { margin-top: 14px; text-align: center; font-size: 12.5px; color: var(--color-text-muted); }
+
+/* success view */
+.tc-done { text-align: center; padding: 12px 6px 6px; }
+.tc-done__badge {
+  width: 76px; height: 76px; margin: 6px auto 20px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--color-primary-soft); color: var(--color-primary); animation: tcPop 0.34s cubic-bezier(0.2, 0.8, 0.3, 1.4);
+}
+@keyframes tcPop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.tc-done__title { margin: 0 0 8px; font-size: 22px; font-weight: 800; color: var(--color-text); }
+.tc-done__msg { margin: 0 auto 24px; max-width: 32ch; color: var(--color-text-muted); line-height: 1.6; }
+
+@media (max-width: 520px) {
+  .tc-modal__card { padding: 26px 20px; border-radius: 20px; }
+  .tc-modal__title { font-size: 23px; }
+}

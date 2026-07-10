@@ -1,0 +1,34 @@
+<!-- Inner body content only. Composed from taspa-* Web Components + global Site CSS. -->
+<div class="app-shell">
+  <taspa-sidebar></taspa-sidebar>
+
+  <div class="app-main">
+    <taspa-topbar title="대시보드"></taspa-topbar>
+
+    <main class="app-content">
+      <div class="page-head">
+        <h1>대시보드</h1>
+        <p>오늘의 식수 현황과 운영 지표를 한눈에 확인하세요.</p>
+      </div>
+
+      <section class="grid cols-4 u-mb-4">
+        <taspa-card><taspa-stat label="오늘 예상 식수" value="842" delta="+4.2%" trend="up"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="실제 식수" value="811" delta="-3.7%" trend="down"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="예측 정확도" value="96.3%" delta="+1.1%" trend="up"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="폐기 절감액" value="₩1.25M" delta="+12%" trend="up"></taspa-stat></taspa-card>
+      </section>
+
+      <section class="grid cols-3">
+        <taspa-card title="주간 식수 추이">
+          <p class="u-muted">차트 영역 — 이후 taspa-chart 컴포넌트로 대체 예정.</p>
+        </taspa-card>
+        <taspa-card title="오늘의 메뉴 선호도">
+          <p class="u-muted">태깅 + 투표 기반 메뉴 선호 데이터가 여기에 표시됩니다.</p>
+        </taspa-card>
+        <taspa-card title="알림">
+          <p class="u-muted">그룹웨어 결재 연동 부재 파악 결과가 여기에 표시됩니다.</p>
+        </taspa-card>
+      </section>
+    </main>
+  </div>
+</div>

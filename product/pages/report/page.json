@@ -1,0 +1,6 @@
+{
+  "title": "리포트",
+  "path": "/report",
+  "inMenu": true,
+  "requiredAuthLevel": 1
+}

@@ -1,0 +1,22 @@
+<div class="app-shell">
+  <taspa-sidebar></taspa-sidebar>
+  <div class="app-main">
+    <taspa-topbar title="리포트"></taspa-topbar>
+    <main class="app-content">
+      <div class="page-head">
+        <h1>리포트</h1>
+        <p>조직도 연동 정산과 폐기 절감 리포트를 확인·내보내기 합니다.</p>
+      </div>
+
+      <section class="grid cols-3 u-mb-4">
+        <taspa-card><taspa-stat label="이번 달 정산액" value="₩38.4M" delta="+3.1%" trend="up"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="폐기 절감액" value="₩1.25M" delta="+12%" trend="up"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="1인당 평균 단가" value="₩4,720" delta="-1.4%" trend="down"></taspa-stat></taspa-card>
+      </section>
+
+      <taspa-card title="부서별 정산 (조직도 연동)">
+        <p class="u-muted">부서별 이용/정산 테이블 자리 — CSV 내보내기 예정.</p>
+      </taspa-card>
+    </main>
+  </div>
+</div>

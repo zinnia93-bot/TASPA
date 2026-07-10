@@ -1,0 +1,24 @@
+<div class="app-shell">
+  <taspa-sidebar></taspa-sidebar>
+  <div class="app-main">
+    <taspa-topbar title="메뉴 관리"></taspa-topbar>
+    <main class="app-content">
+      <div class="page-head u-between u-wrap">
+        <div>
+          <h1>메뉴 관리</h1>
+          <p>태깅과 투표로 수집한 선호도를 기반으로 메뉴를 편성합니다.</p>
+        </div>
+        <button class="u-btn" type="button">+ 메뉴 등록</button>
+      </div>
+
+      <section class="grid cols-2">
+        <taspa-card title="이번 주 편성">
+          <p class="u-muted">요일별 메뉴 카드 목록 자리.</p>
+        </taspa-card>
+        <taspa-card title="선호 태그 TOP">
+          <p><span class="u-badge">#한식</span> <span class="u-badge">#저염</span> <span class="u-badge">#고단백</span></p>
+        </taspa-card>
+      </section>
+    </main>
+  </div>
+</div>

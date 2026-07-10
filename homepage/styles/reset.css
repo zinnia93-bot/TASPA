@@ -1,0 +1,17 @@
+/* Minimal reset. Namo injects Site CSS globally, so keep this conservative. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+h1, h2, h3, h4, p, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+img, svg { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }

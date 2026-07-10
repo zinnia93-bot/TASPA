@@ -1,0 +1,6 @@
+{
+  "title": "메뉴 관리",
+  "path": "/menu",
+  "inMenu": true,
+  "requiredAuthLevel": 1
+}

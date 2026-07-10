@@ -1,0 +1,22 @@
+<div class="app-shell">
+  <taspa-sidebar></taspa-sidebar>
+  <div class="app-main">
+    <taspa-topbar title="식수 예측"></taspa-topbar>
+    <main class="app-content">
+      <div class="page-head">
+        <h1>식수 예측</h1>
+        <p>조직도·근태·결재 데이터를 반영한 일자별 식수 예측입니다.</p>
+      </div>
+
+      <section class="grid cols-3 u-mb-4">
+        <taspa-card><taspa-stat label="내일 예상 식수" value="798" delta="-5.2%" trend="down"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="이번 주 평균" value="826" delta="+2.0%" trend="up"></taspa-stat></taspa-card>
+        <taspa-card><taspa-stat label="부재 인원(결재 연동)" value="44" delta="휴가·출장" trend="up"></taspa-stat></taspa-card>
+      </section>
+
+      <taspa-card title="7일 예측 vs 실제">
+        <p class="u-muted">예측 곡선 차트 자리 — taspa-chart 컴포넌트 예정.</p>
+      </taspa-card>
+    </main>
+  </div>
+</div>
